@@ -1,0 +1,27 @@
+{% extends '../common/layout_admin.html' %}
+
+{% block sidebar %}
+<ul class="nav nav-sidebar">
+    <li id="project"><a href="/admin/setting/project">项目管理</a></li>
+    <li id="host"><a href="/admin/setting/host">Host配置</a></li>
+    <li id="interface"><a href="/admin/setting/interface">接口配置</a></li>
+    <li id="crypt"><a href="/admin/setting/crypt">加解密算法配置</a></li>
+</ul>
+{% end %}
+
+{% block section %}
+    {% if op == 'crypt' %}
+        {% include 'modules/setting/crypt.html' %}
+    {% elif op == 'host' %}
+        {% include 'modules/setting/hosts.html' %}
+    {% elif op == 'interface' %}
+        {% include 'modules/setting/interface.html' %}
+    {% else %}
+        {% include 'modules/setting/project.html' %}
+    {% end %}
+    {% include '../common/modules/tips.html' %}
+{% end %}
+
+{% block footer %}
+<script src="{{ static_url('js/setting.js') }}"></script>
+{% end %}

@@ -1,0 +1,27 @@
+{% extends 'common/layout.html' %}
+
+{% block section %}
+<h1 style="text-align:center">{{ company }}</h1>
+<form id="form-signup" class="form-signup" action="/admin/register" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <h2 class="form-signup-heading">注册</h2>
+    {% if email_ext != '' %}
+    <div class="input-group">
+        <input type="text" id="username" name="username" class="form-control" placeholder="用户名"
+               required aria-required="true" data-toggle="popover" data-target="manual">
+        <div class="input-group-addon"><b>@{{ email_ext }}</b></div>
+    </div>
+    {% else %}
+    <input type="email" id="email" name="username" class="form-control" placeholder="电子邮箱地址"
+           required aria-required="true" data-toggle="popover" data-target="manual">
+    {% end %}
+    <input type="password" id="password" name="password" class="form-control" placeholder="密码, 6-20位字符"
+           onpaste="return false;" oncontextmenu="return false;" required aria-required="true" data-target="manual"
+           oncopy="return false;" oncut="return false;" maxlength="20" minlength="6" data-toggle="popover">
+    <input type="password" id="confirm-password" name="confirm_password" class="form-control" placeholder="确认密码"
+           onpaste="return false;" oncontextmenu="return false;" required aria-required="true" data-target="manual"
+           oncopy="return false;" oncut="return false;" maxlength="20" minlength="6" data-toggle="popover">
+    <input type="button" id="signup-submit" disabled class="btn btn-primary col-md-7" value="注&nbsp;&nbsp;册">
+    <a href="/admin/login" class="btn btn-default col-md-5">登&nbsp;&nbsp;录</a>
+</form>
+{% end %}

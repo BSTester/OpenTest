@@ -1,0 +1,116 @@
+<form id="single-test" class="form-horizontal" action="/admin/interface-test/single" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <label for="project" class="col-md-2 col-lg-1 control-label">所属项目:</label>
+        <div class="col-md-3 col-lg-2">
+            <select id="project" name="pid" class="form-control">
+                <option value="0" selected>请选择项目</option>
+                {% for pj in project_list %}
+                <option value="{{ pj.id }}">{{ pj.name }}</option>
+                {% end %}
+            </select>
+        </div>
+        <label for="host" class="control-label col-md-1 col-lg-1">域&nbsp;&nbsp;&nbsp;&nbsp;名: </label>
+        <div class="col-md-5 col-lg-3">
+            <select id="host" name="host" class="form-control">
+                <option value="none" selected>请选择域名</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="env" class="control-label col-md-2 col-lg-1">环&nbsp;&nbsp;&nbsp;&nbsp;境: </label>
+        <div class="col-md-3 col-lg-2">
+            <select id="env" name="env" class="form-control">
+                <option value="none">默认环境</option>
+            </select>
+        </div>
+        <label for="host-url" class="control-label col-md-1 col-lg-1">接&nbsp;&nbsp;&nbsp;&nbsp;口: </label>
+        <div class="col-md-5 col-lg-3">
+            <select id="host-url" name="host_url" class="form-control">
+                <option value="none" selected>请选择接口</option>
+            </select>
+        </div>
+        <input type="hidden" value="" id="url-label" name="url_label">
+    </div>
+    <div class="form-group">
+        <label for="method" class="control-label col-md-2 col-lg-1">Method:</label>
+        <div class="col-md-2 col-lg-1">
+            <select id="method" name="method" class="form-control">
+                <option value="POST">POST</option>
+                <option value="GET">GET</option>
+            </select>
+        </div>
+        <label for="url" class="control-label col-md-1 col-lg-1">Url: </label>
+        <div class="col-md-6 col-lg-4">
+            <input type="url" id="url" name="url" class="form-control" placeholder="如已选择【域名】及【接口】, 以所选择的【域名】和【接口】为准">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="headers" class="control-label col-md-2 col-lg-1">Headers:</label>
+        <div class="col-md-9 col-lg-6">
+            <textarea id="headers" name="headers" class="form-control" placeholder="User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36
+                                                                                    Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+                                                                                    Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="body" class="control-label col-md-2 col-lg-1">Body:</label>
+        <div class="col-md-9 col-lg-6">
+            <textarea id="body" name="body" class="form-control" placeholder='请求数据可以是任何格式的字符串, 如是json格式字符串且有加密内容, 请在下方的【Body加密内容】文本框中输入需要加密的字段key, 仅支持第一层加密, 留空则加密所有内容
+            【Response解密内容】填写响应返回需要解密的字段, 格式与【Body加密内容】一样'></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="body-crypt" class="control-label col-md-2 col-lg-1">Body加密:</label>
+        <div class="col-md-3 col-lg-2">
+            <select id="body-crypt" name="body_crypt" class="form-control">
+                <option value="none">不加密</option>
+            </select>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <input type="text" id="encrypt-content" name="encrypt_content" class="form-control" placeholder="Body加密字段">
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <input type="text" id="decrypt-content" name="decrypt_content" class="form-control" placeholder="Response解密字段">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2 col-lg-offset-1 col-lg-1">
+            <input type="button" id="test-submit" class="btn btn-primary" value="执行测试">
+        </div>
+        <div class="checkbox col-md-2 col-lg-1">
+            <label>
+                <input type="checkbox" name="redirects" checked><b>自动重定向</b>
+            </label>
+        </div>
+        <div class="checkbox col-md-2 col-lg-2">
+            <label>
+                <input type="checkbox" name="notest"><b>仅生成请求数据</b>
+            </label>
+        </div>
+        <div class="col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-1">
+            <a class="btn btn-info" title="查看日志" data-toggle="modal" data-target="#log-detail">查看日志</a>
+        </div>
+    </div>
+    <div class="form-group test-response">
+        <label class="control-label col-md-2 col-lg-1">Response:</label>
+        <div class="col-md-9 col-lg-11">
+            <span class="form-control well" id="test-response"></span>
+        </div>
+    </div>
+</form>
+<div id="log-detail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="log-detail">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">运行日志</h4>
+      </div>
+      <div class="modal-body" id="test-logs" style="background-color: #000;color: #fff;max-height: 600px;overflow-y: scroll;overflow-wrap: break-word;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>

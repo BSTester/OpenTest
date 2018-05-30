@@ -1,0 +1,19 @@
+version: "2.0"
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: openTest
+    ports:
+      - "3306:3306"
+    container_name: openTest_db
+  app:
+    build: .
+    volumes:
+      - .:/data
+    ports:
+      - "9999:9090"
+    links:
+      - db
+    container_name: openTest_app

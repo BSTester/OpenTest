@@ -1,0 +1,36 @@
+{% extends '../common/layout_admin.html' %}
+
+{% block sidebar %}
+<ul class="nav nav-sidebar">
+    <li id="info"><a href="/admin/profile/info">个人资料</a></li>
+    <li id="password"><a href="/admin/profile/password">修改密码</a></li>
+</ul>
+{% end %}
+
+{% block section %}
+    {% if op == 'info' %}
+        {% include 'modules/profile/info.html' %}
+    {% else %}
+        {% include 'modules/profile/password.html' %}
+    {% end %}
+    {% include '../common/modules/tips.html' %}
+{% end %}
+
+{% block footer %}
+<script>
+$(document).ready(function(){
+    $("#submit").click(function(){
+        var $form = $("form"),
+            url = $form.attr("action");
+        $.post(url, $form.serialize(), function(data){
+            $("#msg").html(data.msg).removeClass('sr-only');
+        }).error(function(data){
+            if(data.status == 403){
+                $("#tips-error #tips-error-msg").html("登录超时, 请重新登录!");
+                $("#tips-error").modal();
+            }
+        });
+    });
+});
+</script>
+{% end %}

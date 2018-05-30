@@ -1,0 +1,32 @@
+<form id="form-users" class="form-horizontal" action="/admin/manage/logs/delete" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <label class="col-md-2 control-label">日志总行数:&nbsp;&nbsp;<span class="label label-primary">{{ total }}</span></label>
+        <div class="col-md-1">
+            <input type="submit" value="清空日志" class="btn btn-primary">
+        </div>
+    </div>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>项目</th>
+            <th>时间</th>
+            <th class="col-md-6">日志</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in range(len(lists)) %}
+        <tr>
+            <td>{{ (page-1)*limit+i+1 }}</td>
+            <td>{{ lists[i].project_name }}</td>
+            <td>{{ lists[i].name }}</td>
+            <td><textarea class="col-md-12">{{ lists[i].value }}</textarea></td>
+        </tr>
+        {% end %}
+        </tbody>
+    </table>
+    {% module nav(total_page, page, limit, '/admin/manage/logs') %}
+</div>

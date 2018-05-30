@@ -1,0 +1,30 @@
+{% extends '../common/layout_admin.html' %}
+
+{% block head %}
+
+{% end %}
+
+{% block sidebar %}
+<ul class="nav nav-sidebar">
+    <li id="reports"><a href="/admin/page-test/reports">测试报告</a></li>
+    <li id="checklinks"><a href="/admin/page-test/checklinks">页面链接检查</a></li>
+    <li id="checkpages"><a href="/admin/page-test/checkpages">页面变化监控</a></li>
+</ul>
+{% end %}
+
+{% block section %}
+    {% if op == 'checklinks' %}
+        {% include 'modules/page/checklinks.html' %}
+    {% elif op == 'checkpages' %}
+        {% include 'modules/page/checkpages.html' %}
+    {% elif op == 'reports' %}
+        {% include 'modules/page/reports.html' %}
+    {% end %}
+    {% include '../common/modules/tips.html' %}
+{% end %}
+
+{% block footer %}
+<script src="{{ static_url('js/jquery.json.min.js') }}"></script>
+<script src="{{ static_url('js/jquery.websocket.js') }}"></script>
+<script src="{{ static_url('js/page.js') }}"></script>
+{% end %}

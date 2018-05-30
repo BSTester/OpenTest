@@ -1,0 +1,18 @@
+{% extends 'common/layout.html' %}
+
+{% block section %}
+<h1 style="text-align:center">{{ company }}</h1>
+<form id="form-signin" class="form-signin" action="/admin/login" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <h2 class="form-signin-heading">登录</h2>
+    <label for="username" class="sr-only">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
+    <input type="text" id="username" name="username" class="form-control" placeholder="用户名/电子邮箱地址"
+           data-target="manual" data-toggle="popover">
+    <label for="password" class="sr-only">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="密码"
+           onpaste="return false;" oncontextmenu="return false;" data-target="manual" data-toggle="popover"
+           oncopy="return false;" oncut="return false;" minlength="6" maxlength="20">
+    <input type="button" id="signin-submit" class="btn btn-primary col-md-7" value="登&nbsp;&nbsp;录">
+    <a href="/admin/register" class="btn btn-default col-md-5">注&nbsp;&nbsp;册</a>
+</form>
+{% end %}

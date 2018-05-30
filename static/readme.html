@@ -1,0 +1,1900 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 60em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*github*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>接口测试平台简介</title></head><body><article class="markdown-body"><h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>接口测试平台简介</h1>
+<div class="toc">
+<ul>
+<li><a href="#_1">接口测试平台简介</a><ul>
+<li><a href="#_2">搭建的初衷</a><ul>
+<li><a href="#_3">现状</a></li>
+<li><a href="#_4">常规接口测试工具</a></li>
+<li><a href="#_5">需要解决的痛点</a></li>
+</ul>
+</li>
+<li><a href="#_6">平台框架图</a></li>
+<li><a href="#_7">平台预览</a><ul>
+<li><a href="#_8">登录、注册</a></li>
+<li><a href="#_9">个人信息管理</a></li>
+<li><a href="#_10">设置</a></li>
+<li><a href="#_11">单个接口测试</a></li>
+<li><a href="#_12">测试用例管理</a></li>
+<li><a href="#_13">任务管理</a></li>
+<li><a href="#_14">测试报告</a></li>
+<li><a href="#_15">扩展功能</a></li>
+</ul>
+</li>
+<li><a href="#linux">部署说明(Linux)</a><ul>
+<li><a href="#_16">环境准备</a></li>
+<li><a href="#_17">代码部署</a></li>
+<li><a href="#nginx">Nginx配置(可选)</a></li>
+<li><a href="#nginx_1">启停脚本(多进程版, 结合Nginx配置使用)</a></li>
+</ul>
+</li>
+<li><a href="#_18">使用说明</a><ul>
+<li><a href="#_19">注册、登录</a></li>
+<li><a href="#_20">个人信息管理</a></li>
+<li><a href="#_21">设置</a><ul>
+<li><a href="#_22">项目管理</a><ul>
+<li><a href="#_23">新增项目</a></li>
+<li><a href="#_24">禁用项目</a></li>
+<li><a href="#_25">删除项目</a></li>
+<li><a href="#_26">成员管理</a></li>
+<li><a href="#_27">配置自定义参数</a></li>
+<li><a href="#_28">配置自定义方法</a></li>
+</ul>
+</li>
+<li><a href="#host">Host配置</a><ul>
+<li><a href="#host_1">新增Host</a></li>
+<li><a href="#host_2">删除Host</a></li>
+<li><a href="#host_3">禁用 / 启用Host</a></li>
+</ul>
+</li>
+<li><a href="#_29">接口配置</a><ul>
+<li><a href="#_30">新增接口</a></li>
+<li><a href="#_31">删除接口</a></li>
+<li><a href="#_32">接口返回值检查配置</a></li>
+<li><a href="#headers">接口默认请求Headers配置</a></li>
+<li><a href="#body">接口默认请求Body配置</a></li>
+</ul>
+</li>
+<li><a href="#_33">加解密配置</a><ul>
+<li><a href="#_34">新增配置</a></li>
+<li><a href="#_35">删除配置</a></li>
+<li><a href="#_36">新增加解密处理方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_37">单接口测试</a></li>
+<li><a href="#_38">测试用例管理</a><ul>
+<li><a href="#_39">新增测试用例</a></li>
+<li><a href="#_40">配置用例测试接口</a></li>
+<li><a href="#_41">选择测试用例</a></li>
+<li><a href="#_42">立即执行任务</a></li>
+<li><a href="#_43">预约执行任务</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_44">扩展功能</a><ul>
+<li><a href="#_45">加密调试</a></li>
+<li><a href="#_46">解密调试</a></li>
+</ul>
+</li>
+<li><a href="#_47">源码详解</a><ul>
+<li><a href="#_48">目录结构</a></li>
+<li><a href="#app_serverpy">入口文件app_server.py</a></li>
+<li><a href="#configapppy">应用配置文件config/app.py</a></li>
+<li><a href="#configurlpy">路由配置文件config/url.py</a></li>
+<li><a href="#configdbpy">数据库相关配置文件config/db.py</a></li>
+<li><a href="#model">Model</a></li>
+<li><a href="#handlerview">Handler(View)</a></li>
+<li><a href="#includecontroller">Include(Controller)</a></li>
+<li><a href="#_49">模板</a></li>
+<li><a href="#_50">静态资源</a></li>
+</ul>
+</li>
+<li><a href="#_51">功能扩展</a><ul>
+<li><a href="#_52">第一步 新建视图文件</a></li>
+<li><a href="#_53">第二步 新建模板文件</a></li>
+<li><a href="#_54">第三步 配置路由</a></li>
+<li><a href="#_55">第四步 增加访问入口</a></li>
+<li><a href="#_56">第五步 编写处理函数</a></li>
+</ul>
+</li>
+<li><a href="#_57">附</a><ul>
+<li><a href="#_58">系统预定义参数</a></li>
+<li><a href="#_59">系统关联参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>搭建的初衷</h2>
+<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>现状</h3>
+<p>目前，基于我们组所需要测试的点，很大一部分都是跟接口相关的，不管是我们系统内部的接口还是第三方(外部系统)的接口。部分接口还涉及到对传输数据的加密解密处理，那么，在日常的测试工作中，难免需要开发为我们提供加解密的工具或者我们自己编写小工具进行测试。随着接口数量的增多，我们为每一个项目开发的小工具也越来越多，每个小工具的使用方法也不太相同，隐性的增加了一些维护成本和使用成本。其实很多方法都是可以复用的，WEB接口测试的方法也都大致相同，那我们是否可以考虑整合一下，做一个统一的测试平台呢？</p>
+<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>常规接口测试工具</h3>
+<p>WEB接口测试的方法，通常都是模拟客户端向服务器发送请求，服务器处理后返回请求结果，然后在检查返回的结果是否符合预期，检查返回的数据格式、字段以及异常请求时服务器是否返回异常等等，尤其涉及第三方接口时，需要考虑接口的安全性，是否可以随意获取等等。<br />
+那常规的接口我们可以使用像Loadrunner、Jmeter、Postman、Fiddler这类性能测试工具或抓包工具来模拟请求，当然熟悉Python或其他开发语言的话，也可以使用类似httpclient、httplib之类的库自行编写脚本模拟客户的请求。</p>
+<h3 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>需要解决的痛点</h3>
+<p>基于我们所测试的接口特点、不涉及加密加签的接口都可以使用已有的测试工具来模拟客户端请求来测试、那么涉及到加密加签的接口我们就需要自行编写小工具来进行测试了。<br />
+不能使用现成的工具是因为基于我们所测试的接口特点不能满足我们的测试需求：<br />
+1. 数据的加密解密算法不同<br />
+2. 数据的加签验签算法不同<br />
+3. 签名的位置，一些要求放在Headers中传输，一些要求当做Body参数传输<br />
+4. 接口请求有时效限制<br />
+如果用现成的工具来测试，我们需要单独生成这些数据后再拼成完整的请求数据，过程会异常麻烦。所以我们需要为不同的项目编写测试小工具来测试，为了我们编写的小工具更具备通用性，降低使用和维护成本，让没有编码基础的测试人员也能轻松完成这类接口的测试工作，方便回归测试，就有了搭建这么一个接口测试平台的想法。</p>
+<h2 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>平台框架图</h2>
+<p><img alt="接口测试平台框架图" src="images/help/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E6%A1%86%E6%9E%B6%E5%9B%BE.png" /></p>
+<h2 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>平台预览</h2>
+<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>登录、注册</h3>
+<p><img alt="登录" src="images/help/%E7%99%BB%E5%BD%95.png" /><br />
+<img alt="注册" src="images/help/%E6%B3%A8%E5%86%8C.png" /></p>
+<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>个人信息管理</h3>
+<p><img alt="个人信息" src="images/help/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.png" /></p>
+<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>设置</h3>
+<p><img alt="设置" src="images/help/%E8%AE%BE%E7%BD%AE.png" /></p>
+<h3 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>单个接口测试</h3>
+<p><img alt="单个接口测试" src="images/help/%E5%8D%95%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95.png" /></p>
+<h3 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>测试用例管理</h3>
+<p><img alt="测试用例管理" src="images/help/%E6%89%B9%E9%87%8F%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95.png" /></p>
+<h3 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>任务管理</h3>
+<p><img alt="任务管理" src="images/help/%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86.png" /></p>
+<h3 id="_14"><a name="user-content-_14" href="#_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>测试报告</h3>
+<p><img alt="报告列表" src="images/help/%E6%8A%A5%E5%91%8A%E5%88%97%E8%A1%A8.png" /><br />
+<img alt="测试报告" src="images/help/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.png" /><br />
+<img alt="报告详情" src="images/help/%E6%8A%A5%E5%91%8A%E8%AF%A6%E6%83%85.png" /></p>
+<h3 id="_15"><a name="user-content-_15" href="#_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>扩展功能</h3>
+<p><img alt="加密" src="images/help/%E5%8A%A0%E5%AF%86.png" /><br />
+<img alt="解密" src="images/help/%E8%A7%A3%E5%AF%86.png" /></p>
+<h2 id="linux"><a name="user-content-linux" href="#linux" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>部署说明(Linux)</h2>
+<h3 id="_16"><a name="user-content-_16" href="#_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>环境准备</h3>
+<p>测试平台是基于Python 3.5开发的，所以需要Python 3以上版本，推荐安装Python 3.5<br />
+使用了tornado web开发框架，<a href="http://demo.pythoner.com/itt2zh/index.html" title="点击这里了解tornado">了解tornado</a>。<br />
+<strong> 安装需要的模块 </strong><br />
+<code>pip install tornado munch tormysql pymysql pycrypto tornado_smtp</code><br />
+如果在安装模块的过程中还缺少其他模块，请自行根据提示进行安装。<br />
+另外还使用了前端框架<a href="http://www.bootcss.com/" title="点击这里了解Bootstrap">Bootstrap</a></p>
+<blockquote>
+<p>tornado：  web开发框架<br />
+   munch：  字典、对象互转扩展模块<br />
+   tormysql：  异步数据库驱动 <br />
+   pymysql：  纯Python实现的Mysql客户端，Mysqldb的替代品 <br />
+   pycrypto：  Python加密工具包<br />
+   tornado_smtp：  异步SMTP客户端  </p>
+</blockquote>
+<h3 id="_17"><a name="user-content-_17" href="#_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>代码部署</h3>
+<p>将源码上传到服务器的任意位置、基于规范，建议上传到存放web应用的统一目录中。</p>
+<h3 id="nginx"><a name="user-content-nginx" href="#nginx" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Nginx配置(可选)</h3>
+<div class="codehilite"><pre><span class="nt">upstream</span> <span class="nt">tornadoes</span> <span class="p">{</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19090</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19091</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19092</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19093</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19094</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19095</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19096</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19097</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19098</span><span class="p">;</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">19099</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="m">9999</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="m">172</span><span class="o">.</span><span class="m">20</span><span class="o">.</span><span class="m">20</span><span class="o">.</span><span class="m">86</span><span class="p">;</span>
+    <span class="n">access_log</span> <span class="n">off</span><span class="p">;</span>
+    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span> <span class="n">index</span><span class="o">.</span><span class="n">py</span><span class="p">;</span>
+    <span class="n">root</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">monitorPlatform</span><span class="p">;</span>
+
+    <span class="n">location</span> <span class="o">/</span> <span class="err">{</span>
+        <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">://</span><span class="n">tornadoes</span><span class="p">;</span>
+        <span class="n">include</span> <span class="n">public_config</span><span class="o">/</span><span class="n">proxy</span><span class="o">.</span><span class="n">conf</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">location</span> <span class="o">/</span><span class="nt">static</span><span class="o">/</span> <span class="p">{</span>
+        <span class="n">root</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">monitorPlatform</span><span class="o">/</span><span class="k">static</span><span class="p">;</span>
+        <span class="n">if</span> <span class="p">(</span><span class="err">$</span><span class="n">query_string</span><span class="p">)</span> <span class="err">{</span>
+            <span class="n">expires</span> <span class="n">max</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+
+    <span class="nt">location</span> <span class="o">~</span> <span class="o">.*</span><span class="err">\</span><span class="o">.(</span><span class="nt">gif</span><span class="o">|</span><span class="nt">jpg</span><span class="o">|</span><span class="nt">jpeg</span><span class="o">|</span><span class="nt">png</span><span class="o">|</span><span class="nt">bmp</span><span class="o">|</span><span class="nt">swf</span><span class="o">|</span><span class="nt">flv</span><span class="o">|</span><span class="nt">ico</span><span class="o">|</span><span class="nt">eot</span><span class="o">|</span><span class="nt">ttf</span><span class="o">|</span><span class="nt">svg</span><span class="o">|</span><span class="nt">woff</span><span class="o">|</span><span class="nt">woff2</span><span class="o">)$</span> <span class="p">{</span>
+        <span class="n">expires</span> <span class="m">30</span><span class="n">d</span><span class="p">;</span>
+        <span class="n">access_log</span> <span class="n">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">location</span> <span class="o">~</span> <span class="o">.*</span><span class="err">\</span><span class="o">.(</span><span class="nt">js</span><span class="o">|</span><span class="nt">css</span><span class="o">)?$</span> <span class="p">{</span>
+        <span class="n">expires</span> <span class="m">7</span><span class="n">d</span><span class="p">;</span>
+        <span class="n">access_log</span> <span class="n">off</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h3 id="nginx_1"><a name="user-content-nginx_1" href="#nginx_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>启停脚本(多进程版, 结合Nginx配置使用)</h3>
+<p><div class="codehilite"><pre><span class="ch">#!/bin/bash</span>
+<span class="c1"># tornado服务启停脚本</span>
+<span class="k">function</span> startservice<span class="o">(){</span>
+    <span class="k">for</span> i in <span class="m">19090</span> <span class="m">19091</span> <span class="m">19092</span> <span class="m">19093</span> <span class="m">19094</span> <span class="m">19095</span> <span class="m">19096</span> <span class="m">19097</span> <span class="m">19098</span> 19099
+    <span class="k">do</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="nv">$i</span> -eq <span class="m">19090</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+            nohup python3 /opt/monitorPlatform/app_server.py --port<span class="o">=</span><span class="nv">$i</span> --monitor<span class="o">=</span>on --log_file_prefix<span class="o">=</span>/opt/monitorPlatform/log/apitest-<span class="nv">$i</span>.log &gt; /dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+        <span class="k">else</span>
+            nohup python3 /opt/monitorPlatform/app_server.py --port<span class="o">=</span><span class="nv">$i</span> --log_file_prefix<span class="o">=</span>/opt/monitorPlatform/log/apitest-<span class="nv">$i</span>.log &gt; /dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+        <span class="k">fi</span>
+        <span class="nb">echo</span> <span class="s2">&quot;started port </span><span class="nv">$i</span><span class="s2">&#39;s service&quot;</span>
+    <span class="k">done</span>
+<span class="o">}</span>
+<span class="k">function</span> stopservice<span class="o">(){</span>
+    <span class="k">for</span> i in <span class="m">19090</span> <span class="m">19091</span> <span class="m">19092</span> <span class="m">19093</span> <span class="m">19094</span> <span class="m">19095</span> <span class="m">19096</span> <span class="m">19097</span> <span class="m">19098</span> 19099
+    <span class="k">do</span>
+        <span class="nb">kill</span> -9 <span class="sb">`</span>ps aux <span class="p">|</span> grep <span class="s2">&quot;port=</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="p">|</span> grep -v <span class="s2">&quot;grep&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;NR==1 {printf $2}&#39;</span><span class="sb">`</span> 
+        <span class="nb">echo</span> <span class="s2">&quot;stoped port </span><span class="nv">$i</span><span class="s2">&#39;s service&quot;</span>
+    <span class="k">done</span>
+<span class="o">}</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;start&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+    startservice
+<span class="k">elif</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;stop&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+    stopservice
+<span class="k">elif</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;restart&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+    stopservice
+    startservice
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Please input like this:\&quot;</span><span class="nv">$0</span><span class="s2"> start [stop | restart]\&quot;&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+<br />
+<strong>启动命令说明</strong></p>
+<blockquote>
+<p><strong>测试平台已经支持异步处理，所以启动一个进程即可。</strong><br />
+app_server.py是系统入口文件，启动参数有三个<br />
+&ndash;port=9999    启动端口<br />
+&ndash;monitor=on    启动时同时启动定时任务监控<br />
+&ndash;log_file_prefix=log_file_path    系统日志输出到指定文件 <br />
+如：<code>$python3 app_server.py --port=9999 --monitor=off</code></p>
+</blockquote>
+<h2 id="_18"><a name="user-content-_18" href="#_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>使用说明</h2>
+<h3 id="_19"><a name="user-content-_19" href="#_19" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>注册、登录</h3>
+<p><img alt="注册" src="images/help/%E8%AF%B4%E6%98%8E-%E6%B3%A8%E5%86%8C.png" /></p>
+<blockquote>
+<p>建议使用公司邮箱注册，密码在数据库中已加密存储。</p>
+</blockquote>
+<p><img alt="登录" src="images/help/%E8%AF%B4%E6%98%8E-%E7%99%BB%E5%BD%95.png" /></p>
+<blockquote>
+<p>使用注册的邮箱登录</p>
+</blockquote>
+<h3 id="_20"><a name="user-content-_20" href="#_20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>个人信息管理</h3>
+<p><img alt="修改个人资料" src="images/help/%E8%AF%B4%E6%98%8E-%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99.png" /></p>
+<blockquote>
+<p>修改用户名后，可以使用邮箱或用户名登录</p>
+</blockquote>
+<p><img alt="修改密码" src="images/help/%E8%AF%B4%E6%98%8E-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81.png" /></p>
+<h3 id="_21"><a name="user-content-_21" href="#_21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>设置</h3>
+<h4 id="_22"><a name="user-content-_22" href="#_22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>项目管理</h4>
+<h5 id="_23"><a name="user-content-_23" href="#_23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>新增项目</h5>
+<p><img alt="添加项目" src="images/help/%E8%AF%B4%E6%98%8E-%E6%B7%BB%E5%8A%A0%E9%A1%B9%E7%9B%AE.png" /></p>
+<h5 id="_24"><a name="user-content-_24" href="#_24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>禁用项目</h5>
+<p><img alt="禁用项目" src="images/help/%E8%AF%B4%E6%98%8E-%E7%A6%81%E7%94%A8%E9%A1%B9%E7%9B%AE.png" /></p>
+<blockquote>
+<p>禁用项目后，在所有跟项目相关联的配置中，该项目不可选</p>
+</blockquote>
+<h5 id="_25"><a name="user-content-_25" href="#_25" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>删除项目</h5>
+<p><img alt="删除项目" src="images/help/%E8%AF%B4%E6%98%8E-%E5%88%A0%E9%99%A4%E9%A1%B9%E7%9B%AE.png" /></p>
+<blockquote>
+<p>在删除项目之前，需要删除跟该项目所有相关联的配置</p>
+</blockquote>
+<h5 id="_26"><a name="user-content-_26" href="#_26" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>成员管理</h5>
+<p><img alt="成员管理" src="images/help/%E8%AF%B4%E6%98%8E-%E6%88%90%E5%91%98%E7%AE%A1%E7%90%86.png" /></p>
+<blockquote>
+<p>配置可访问该项目的普通用户，管理员可见所有的项目，测试报告的邮件发送将基于项目成员用户(已勾选接收邮件)发送。</p>
+</blockquote>
+<h5 id="_27"><a name="user-content-_27" href="#_27" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>配置自定义参数</h5>
+<p><img alt="自定义参数" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0.png" /></p>
+<blockquote>
+<p>项目参数配置，主要配置项目中有特殊需求的情况，比如需要加签、需要添加、验证特定值、从数据库获取特定值等情况<br />
+自定义参数有三种类型：String、Function、Data<br />
+String：普通字符串, 也可配置成关联参数变量。<br />
+Function：通过自定义方法取值, 比如加签、验签等。<br />
+Data：从数据源取值, 比如从mysql数据库取值, 查询语句中可以配置关联参数实现动态查询取值。</p>
+</blockquote>
+<h5 id="_28"><a name="user-content-_28" href="#_28" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>配置自定义方法</h5>
+<p><img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%951.png" /><br />
+在配置自定义参数时，Function类型的参数，需要根据项目需求配置自定义方法，具体步骤如下：<br />
+<strong>1. 进入源码中的custom_func目录</strong><br />
+<img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%952.png" /><br />
+<strong>2. 打开sign_func.py文件</strong><br />
+<img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%953.png" /><br />
+<strong>3. 在sign_func.py文件末尾添加新增的方法</strong><br />
+<img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%954.png" /></p>
+<blockquote>
+<p>自定义方法必须有三个固定的参数，body、params和encrypt<br />
+body：请求Body，以字典格式传入，如果转成字典失败会原样传入，使用前最好进行类型判断。<br />
+params：已配置的项目自定义参数，以元素为字典的列表格式传入。<br />
+encrypt：项目相关的加密配置信息，以字典格式传入，没有传入值为None。</p>
+</blockquote>
+<p><img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%955.png" /><br />
+<strong>4. 打开config目录下的func.py文件</strong><br />
+<img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%956.png" /><br />
+<strong>5. 找到自定义方法配置所在位置，新增一行配置</strong><br />
+<img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%957.png" /></p>
+<blockquote>
+<p>自定义方法配置是元素为字典的列表<br />
+新增一个列表元素，格式为：{&lsquo;name&rsquo;: &lsquo;sign_test&rsquo;, &lsquo;function&rsquo;: sign_test, &lsquo;comment&rsquo;: &lsquo;&rsquo;}<br />
+name：选择时显示的方法名<br />
+function：该方法的处理函数名，即在customfunc.py文件中新增的方法名(不带括号引用)<br />
+comment：备注，在配置中选择自定义方法时，会给出提示方便识别。</p>
+</blockquote>
+<p><strong>6. 重启服务</strong><br />
+<img alt="自定义方法" src="images/help/%E8%AF%B4%E6%98%8E-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%958.png" /></p>
+<h4 id="host"><a name="user-content-host" href="#host" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Host配置</h4>
+<p>Host配置用于通过切换域名指向不同的ip地址来达到测试不同测试环境的目的。</p>
+<h5 id="host_1"><a name="user-content-host_1" href="#host_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>新增Host</h5>
+<p><img alt="添加host" src="images/help/%E8%AF%B4%E6%98%8E-%E6%B7%BB%E5%8A%A0host.png" /></p>
+<blockquote>
+<p>选择应用于所有项目，添加时将为所有项目配置Host<br />
+选择单个项目，添加时只为该项目配置Host</p>
+</blockquote>
+<h5 id="host_2"><a name="user-content-host_2" href="#host_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>删除Host</h5>
+<p><img alt="删除host" src="images/help/%E8%AF%B4%E6%98%8E-%E5%88%A0%E9%99%A4host.png" /></p>
+<blockquote>
+<p>删除host配置后，将使用系统所部署服务器的host配置，如果没有则使用DNS解析结果。</p>
+</blockquote>
+<h5 id="host_3"><a name="user-content-host_3" href="#host_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>禁用 / 启用Host</h5>
+<p><img alt="禁启用host" src="images/help/%E8%AF%B4%E6%98%8E-%E7%A6%81%E5%90%AF%E7%94%A8host.png" /></p>
+<blockquote>
+<p>禁用host配置后，将使用系统所部署服务器的host配置，如果没有则使用DNS解析结果。<br />
+按钮为红色，显示为禁用时，该配置是已生效状态</p>
+</blockquote>
+<h4 id="_29"><a name="user-content-_29" href="#_29" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>接口配置</h4>
+<h5 id="_30"><a name="user-content-_30" href="#_30" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>新增接口</h5>
+<p><img alt="添加接口" src="images/help/%E8%AF%B4%E6%98%8E-%E6%B7%BB%E5%8A%A0%E6%8E%A5%E5%8F%A3.png" /></p>
+<h5 id="_31"><a name="user-content-_31" href="#_31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>删除接口</h5>
+<p><img alt="删除接口" src="images/help/%E8%AF%B4%E6%98%8E-%E5%88%A0%E9%99%A4%E6%8E%A5%E5%8F%A3.png" /></p>
+<h5 id="_32"><a name="user-content-_32" href="#_32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>接口返回值检查配置</h5>
+<p><img alt="配置接口" src="images/help/%E8%AF%B4%E6%98%8E-%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3.png" /></p>
+<blockquote>
+<p>接口返回值检查配置，用于检查接口返回值参数是否符合需求，比如字段是否完整，字段值是否为空，字段类型是否正确等等<br />
+1. 只能检查返回值是json格式的接口<br />
+2. 可检查字段是否完整、字段值是否为空以及字段类型<br />
+3. 支持检查的类型有: int|float|num|str|date|time|datetime|list|dict|/正则表达式/<br />
+整型|浮点型|数字(包含整型和浮点型)|字符串|日期|时间|日期时间格式|列表|字典|正则<br />
+<strong> 配置格式说明： </strong><br />
+检查第一层Key值, 一行配置一个, 需要检查子层时, 在第一层的基础上用 .[] 连接子层需要检查的Key值, 如果某个字段的值为列表，用.[N](N为整数)取列表值，格式, key=0|type [非必填|类型] | key=1|type [必填|类型], 如:<br />
+id=1|int<br />
+code.[code=1|int,id=1|int,msg=0|str]<br />
+rows.[0].[code=1|int,id=1|int,msg=0|str]<br />
+result.rows.[code=1|int,id=1|int,msg=0|str]<br />
+result.rows.[code=1|int,id=1|int,msg=0|/\d+/]</p>
+</blockquote>
+<h5 id="headers"><a name="user-content-headers" href="#headers" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>接口默认请求Headers配置</h5>
+<blockquote>
+<p>在配置接口测试参数时，选择该接口将默认为headers字段填充配置的值</p>
+</blockquote>
+<h5 id="body"><a name="user-content-body" href="#body" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>接口默认请求Body配置</h5>
+<blockquote>
+<p>在配置接口测试参数时，选择该接口将默认为body字段填充配置的值</p>
+</blockquote>
+<h4 id="_33"><a name="user-content-_33" href="#_33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>加解密配置</h4>
+<h5 id="_34"><a name="user-content-_34" href="#_34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>新增配置</h5>
+<p><img alt="新增加解密算法" src="images/help/%E8%AF%B4%E6%98%8E-%E6%B7%BB%E5%8A%A0%E5%8A%A0%E5%AF%86.png" /></p>
+<blockquote>
+<ol>
+<li>加解密算法配置必须选择一个项目进行关联</li>
+<li>加密算法和解密算法是成对配置的</li>
+<li>目前已经配置了三类加密算法，分别是AES、DES、DES3。</li>
+<li>三类加密算法分别有ECB和CBC模式，经过base64、urlencode编码之后，组合了14中方法，如果没有所需的，可以另外配置</li>
+</ol>
+</blockquote>
+<h5 id="_35"><a name="user-content-_35" href="#_35" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>删除配置</h5>
+<p><img alt="删除加解密" src="images/help/%E8%AF%B4%E6%98%8E-%E5%88%A0%E9%99%A4%E5%8A%A0%E8%A7%A3%E5%AF%86.png" /></p>
+<h5 id="_36"><a name="user-content-_36" href="#_36" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>新增加解密处理方法</h5>
+<blockquote>
+<p>新增加解密方法的步骤跟新增自定义方法的过程类似</p>
+</blockquote>
+<p><strong>1. 进入custom_func目录</strong><br />
+<img alt="新增加密" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E5%8A%A0%E5%AF%861.png" /><br />
+<strong>2. 如果需要添加的加解密方法不在系统预设的AES、DES、DES3三大类中，可以在custom_func目录中新建一个加密类文件</strong><br />
+<img alt="新增加密" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E5%8A%A0%E5%AF%862.png" /><br />
+<strong>3. 打开crypt_func.py文件，参考该文件中的方法在文件末尾新增处理方法。</strong><br />
+<img alt="新增加密" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E5%8A%A0%E5%AF%863.png" /><br />
+<img alt="新增加密" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E5%8A%A0%E5%AF%864.png" /></p>
+<blockquote>
+<p>方法必须包含四个传入参数：<br />
+string：待加密或解密的字符串<br />
+key：加密或解密KEY<br />
+iv：加密或解密IV<br />
+mode：加密或解密模式<br />
+返回处理后的结果</p>
+</blockquote>
+<p><strong>4. 打开config目录下的func.py文件，配置加解密方法</strong><br />
+<img alt="新增加密" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E5%8A%A0%E5%AF%865.png" /><br />
+<img alt="新增加密" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E5%8A%A0%E5%AF%866.png" /></p>
+<blockquote>
+<p>找到加解密配置所在位置<br />
+加解密配置是元素为字典的列表<br />
+新增一个列表元素，格式为：{&lsquo;name&rsquo;: &lsquo;DES3(CBC)_TO_base64_URLEncode&rsquo;, &lsquo;function&rsquo;: des3_encode_to_b64_url_encode, &lsquo;mode&rsquo;: &lsquo;CBC&rsquo;, &lsquo;comment&rsquo;: &lsquo;DES3加密并进行base64编码后再URLEncode, CBC模式&rsquo;}<br />
+name：选择时显示的方法名<br />
+function：该加解密方法的处理函数名，即在function.py文件中新增的方法名<br />
+mode：加密或解密模式<br />
+comment：备注，在配置中选择加解密方法时，会给出提示方便识别。<br />
+加密和解密的配置格式相同，可参考已有的配置</p>
+</blockquote>
+<p><strong>5. 保存配置后重启服务</strong><br />
+<img alt="新增加密" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E5%8A%A0%E5%AF%867.png" /></p>
+<h3 id="_37"><a name="user-content-_37" href="#_37" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>单接口测试</h3>
+<p><img alt="单接口测试" src="images/help/%E8%AF%B4%E6%98%8E-%E5%8D%95%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%951.png" /><br />
+<img alt="单接口测试" src="images/help/%E8%AF%B4%E6%98%8E-%E5%8D%95%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%952.png" /></p>
+<blockquote>
+<p>Headers配置格式为 key: value 形式。<br />
+Body配置的格式可以为任何形式，取决于Headers中Content-Type的类型，如果Content-Type类型是application/json，Body必须是json格式字符串，如果Content-Type类型是application/x-www-form-urlencoded，Body可以是字典格式的字符串，或者以Key=value的形式配置，一组参数独占一行，当然，可以直接以URLEncode后的形式配置，比如：key1=value1&amp;key2=value2&amp;key3=value3<br />
+Body加密配置，能够加密的前提是Headers中Content-Type的类型为application/json或application/x-www-form-urlencoded。目前只能加密第一层数据，如果不指定加密的字段，将加密所有内容。<br />
+解密字段配置，接口返回数据必须是json格式字符串，只能解密第一层数据。<br />
+重定向跟随选项，如果接口返回301或者302，勾选将自动跟随请求重定向后的链接，不勾选将直接返回响应结果。<br />
+仅生成请求数据选项，勾选将只生成请求Body数据，不发起接口请求，需要手工测试时可辅助生成请求数据。</p>
+</blockquote>
+<h3 id="_38"><a name="user-content-_38" href="#_38" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>测试用例管理</h3>
+<h4 id="_39"><a name="user-content-_39" href="#_39" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>新增测试用例</h4>
+<p><img alt="新增用例" src="images/help/%E8%AF%B4%E6%98%8E-%E6%96%B0%E5%A2%9E%E7%94%A8%E4%BE%8B.png" /></p>
+<h4 id="_40"><a name="user-content-_40" href="#_40" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>配置用例测试接口</h4>
+<p><img alt="批量接口测试" src="images/help/%E8%AF%B4%E6%98%8E-%E6%89%B9%E9%87%8F%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%951.png" /><br />
+<img alt="批量接口测试" src="images/help/%E8%AF%B4%E6%98%8E-%E6%89%B9%E9%87%8F%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%952.png" /></p>
+<blockquote>
+<p>检查点配置，配置此项将搜索接口返回值中是否包含配置的关键词, 用“|”分割多个关键词, 支持正则表达式, 如果使用正则表达式匹配, 不支持“|”分割, 否则会当做多个普通关键词进行检查。<br />
+关联配置，配置此项用于获取接口返回值中的特定值，要求接口返回值必须是json格式字符串，配置格式跟接口完整性检查的配置类似，例如：<br />
+{page_id}=data.page_id 表示取返回值中key为data下的字典key为page_id的值<br />
+{page_id}=data.[1].page_id 表示取返回值中key为data，data的值是一个元素为字典的列表，取列表中第二个元素，字典key为page_id的值。<br />
+有两个系统关联参数<br />
+{cookie}=response_headers.Set-Cookie      获取cookie值<br />
+{body}=response_body 获取完整响应body值<br />
+关联参数支持int和float类型转换<br />
+{id}=int(data.id)  表示将获取到的值转换为int类型<br />
+{total}=float(data.[0].total)  表示将获取到的值转换为float类型<br />
+关联参数支持正则表达式取值<br />
+{headers}=response_headers./.*/      获取所有响应headers<br />
+{body}=/测试字符串(\d+),/      取出【测试字符串】与【,】之间的数字<br />
+备注，是对该接口测试的一些描述说明。</p>
+</blockquote>
+<h4 id="_41"><a name="user-content-_41" href="#_41" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>选择测试用例</h4>
+<p><img alt="批量接口用例" src="images/help/%E8%AF%B4%E6%98%8E-%E6%89%B9%E9%87%8F%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%953.png" /></p>
+<blockquote>
+<p>配置完测试用例后，可以随意组合用例进行测试，勾选要测试的用例，测试时会按用例的排序先后进行测试，如果需要调整用例顺序，可点击【操作】列中的【上移】按钮进行调整。</p>
+</blockquote>
+<h4 id="_42"><a name="user-content-_42" href="#_42" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>立即执行任务</h4>
+<blockquote>
+<p>勾选完需要测试的用例后，点击【立即执行】按钮，将立即执行测试任务。在执行前，可给任务取一个任务名称。</p>
+</blockquote>
+<h4 id="_43"><a name="user-content-_43" href="#_43" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>预约执行任务</h4>
+<blockquote>
+<p>勾选完需要测试的用例后，配置好定时时间，执行周期，点击【预约执行】按钮，将会保存此任务，到预约的时间点后自动执行。在执行前，可给任务取一个任务名称。</p>
+</blockquote>
+<h2 id="_44"><a name="user-content-_44" href="#_44" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>扩展功能</h2>
+<h3 id="_45"><a name="user-content-_45" href="#_45" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>加密调试</h3>
+<p><img alt="加密调试" src="images/help/%E8%AF%B4%E6%98%8E-%E5%8A%A0%E5%AF%861.png" /><br />
+<img alt="加密调试" src="images/help/%E8%AF%B4%E6%98%8E-%E5%8A%A0%E5%AF%862.png" /></p>
+<h3 id="_46"><a name="user-content-_46" href="#_46" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>解密调试</h3>
+<p><img alt="解密调试" src="images/help/%E8%AF%B4%E6%98%8E-%E8%A7%A3%E5%AF%861.png" /><br />
+<img alt="解密调试" src="images/help/%E8%AF%B4%E6%98%8E-%E8%A7%A3%E5%AF%862.png" /></p>
+<h2 id="_47"><a name="user-content-_47" href="#_47" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>源码详解</h2>
+<h3 id="_48"><a name="user-content-_48" href="#_48" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>目录结构</h3>
+<p><img alt="源码目录结构" src="images/help/%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95.png" /><br />
+类似MVC的框架结构组织代码，tornado并没有固定的代码组织形式，这里不会讲解tornado的使用，tornado web开发框架的详细使用方法，<a href="http://demo.pythoner.com/itt2zh/index.html" title="点击这里了解tornado">请参考tornado开发手册</a></p>
+<div class="codehilite"><pre>├─config        #配置文件目录
+├─custom_func   #加解密算法及自定义方法配置
+├─handlers      #View层
+│  └─admin
+├─includes      #所有逻辑处理都存在放此目录中
+├─logs
+├─modules       #Model层
+├─static        #静态资源
+│  ├─css
+│  ├─fonts
+│  ├─images
+│  │  └─help
+│  └─js
+│      └─localization
+└─templates     #模板
+    ├─admin
+    │  └─includes
+    │      ├─dashboard
+    │      ├─manage
+    │      ├─plugin
+    │      ├─profile
+    │      └─setting
+    ├─modules   #模板UI模块
+    └─public    #公共模板
+</pre></div>
+
+
+<h3 id="app_serverpy"><a name="user-content-app_serverpy" href="#app_serverpy" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>入口文件app_server.py</h3>
+<div class="codehilite"><pre><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># coding=utf8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Author: 归根落叶</span>
+<span class="sd">Blog: https://www.bstester.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">tornado</span> <span class="k">import</span> <span class="n">httpserver</span><span class="p">,</span> <span class="n">ioloop</span>
+<span class="kn">from</span> <span class="nn">tornado.options</span> <span class="k">import</span> <span class="n">options</span><span class="p">,</span> <span class="n">define</span>
+<span class="kn">from</span> <span class="nn">tornado.web</span> <span class="k">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">includes.scheduler</span> <span class="k">import</span> <span class="n">job_monitor</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="k">import</span> <span class="n">urls</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="k">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">app_cfg</span>
+<span class="kn">from</span> <span class="nn">config.db</span> <span class="k">import</span> <span class="n">init_db</span>
+
+
+<span class="k">class</span> <span class="nc">AppServer</span><span class="p">(</span><span class="n">Application</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;应用启动入口&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">handlers</span> <span class="o">=</span> <span class="n">urls</span><span class="o">.</span><span class="n">handlers</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;template_path&#39;</span><span class="p">:</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">template_path</span><span class="p">,</span>
+                    <span class="s">&#39;static_path&#39;</span><span class="p">:</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">static_path</span><span class="p">,</span>
+                    <span class="s">&#39;cookie_secret&#39;</span><span class="p">:</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">cookie_secret</span><span class="p">,</span>
+                    <span class="s">&#39;xsrf_cookie&#39;</span><span class="p">:</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">xsrf_cookie</span><span class="p">,</span>
+                    <span class="s">&#39;login_url&#39;</span><span class="p">:</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">login_url</span><span class="p">,</span>
+                    <span class="s">&#39;ui_modules&#39;</span><span class="p">:</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">ui_modules</span><span class="p">,</span>
+                    <span class="s">&#39;debug&#39;</span><span class="p">:</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">debug</span><span class="p">}</span>
+        <span class="n">Application</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handlers</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">define</span><span class="p">(</span><span class="s">&#39;port&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">app_port</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;run on the given port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">define</span><span class="p">(</span><span class="s">&#39;monitor&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;off&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;open jobs monitor&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="n">options</span><span class="o">.</span><span class="n">parse_command_line</span><span class="p">()</span>
+    <span class="n">http_server</span> <span class="o">=</span> <span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">AppServer</span><span class="p">())</span>
+    <span class="n">http_server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;on&#39;</span><span class="p">:</span>
+        <span class="n">ioloop</span><span class="o">.</span><span class="n">PeriodicCallback</span><span class="p">(</span><span class="n">job_monitor</span><span class="p">,</span> <span class="n">app_cfg</span><span class="o">.</span><span class="n">cycle_time</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">run_sync</span><span class="p">(</span><span class="n">init_db</span><span class="p">)</span>
+    <span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+
+<blockquote>
+<p>入口文件详细说明请参考<a href="http://demo.pythoner.com/itt2zh/ch1.html#ch1-2-1">Tornado应用的基础示例说明</a></p>
+</blockquote>
+<h3 id="configapppy"><a name="user-content-configapppy" href="#configapppy" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用配置文件config/app.py</h3>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">includes.ui_modules</span> <span class="kn">import</span> <span class="n">NavModule</span>
+
+<span class="c1"># 数据库配置</span>
+<span class="n">db_host</span> <span class="o">=</span> <span class="s">&#39;172.20.20.86&#39;</span>
+<span class="n">db_port</span> <span class="o">=</span> <span class="mi">3306</span>
+<span class="n">db_name</span> <span class="o">=</span> <span class="s">&#39;monitor_platform&#39;</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="s">&#39;root&#39;</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="s">&#39;123456&#39;</span>
+<span class="n">db_charset</span> <span class="o">=</span> <span class="s">&#39;utf8&#39;</span>
+<span class="n">db_pool_size</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">db_pool_recycle</span> <span class="o">=</span> <span class="mi">3600</span>
+<span class="n">db_timeout</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># 应用配置</span>
+<span class="n">app_port</span> <span class="o">=</span> <span class="mi">9090</span>     <span class="c1"># 应用默认端口</span>
+<span class="n">template_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">&#39;../templates&#39;</span><span class="p">)</span>
+<span class="n">static_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">&#39;../static&#39;</span><span class="p">)</span>
+<span class="n">login_url</span> <span class="o">=</span> <span class="s">&#39;/admin/login&#39;</span>
+<span class="n">ui_modules</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;nav&#39;</span><span class="p">:</span> <span class="n">NavModule</span><span class="p">}</span>
+<span class="n">cookie_secret</span> <span class="o">=</span> <span class="s">&#39;SQYMzDHiShGCl1gx/e4g5HHS7Be1UkPpk7eJxklvKmE=&#39;</span>
+<span class="n">xsrf_cookie</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">debug</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c1"># 定时任务配置</span>
+<span class="n">cycle_time</span> <span class="o">=</span> <span class="mi">5</span>    <span class="c1"># 定时任务监控周期(秒)</span>
+</pre></div>
+
+
+<h3 id="configurlpy"><a name="user-content-configurlpy" href="#configurlpy" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>路由配置文件config/url.py</h3>
+<div class="codehilite"><pre><span class="c1"># 路由配置</span>
+<span class="kn">from</span> <span class="nn">handlers</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">handlers.admin</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">handlers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">r&#39;/&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">IndexHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/help&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">HelpHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/manage&#39;</span><span class="p">,</span> <span class="n">manage</span><span class="o">.</span><span class="n">ManageHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/manage/(\w+)&#39;</span><span class="p">,</span> <span class="n">manage</span><span class="o">.</span><span class="n">ManageHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/manage/(\w+)/(\w+)&#39;</span><span class="p">,</span> <span class="n">manage</span><span class="o">.</span><span class="n">ManageHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/manage/(\w+)/(\w+)/(\d+)&#39;</span><span class="p">,</span> <span class="n">manage</span><span class="o">.</span><span class="n">ManageHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/login&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">LoginHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/register&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">RegisterHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/register/(\w+)&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">RegisterHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/logout&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">LogoutHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/dashboard&#39;</span><span class="p">,</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">DashboardHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/dashboard/(\w+)&#39;</span><span class="p">,</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">DashboardHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/dashboard/(\w+)/(\w+)&#39;</span><span class="p">,</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">DashboardHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/dashboard/(\w+)/(\w+)/(\d+)&#39;</span><span class="p">,</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">DashboardHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/dashboard/(\w+)/(\w+)/(\d+)/(\d+)&#39;</span><span class="p">,</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">DashboardHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/setting&#39;</span><span class="p">,</span> <span class="n">setting</span><span class="o">.</span><span class="n">SettingHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/setting/(\w+)&#39;</span><span class="p">,</span> <span class="n">setting</span><span class="o">.</span><span class="n">SettingHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/setting/(\w+)/(\d+)/(\d+)&#39;</span><span class="p">,</span> <span class="n">setting</span><span class="o">.</span><span class="n">SettingHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/setting/(\w+)/(\d+)/(\d+)/(\d+)&#39;</span><span class="p">,</span> <span class="n">setting</span><span class="o">.</span><span class="n">SettingHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/setting/(\w+)/(\w+)&#39;</span><span class="p">,</span> <span class="n">setting</span><span class="o">.</span><span class="n">SettingHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/profile&#39;</span><span class="p">,</span> <span class="n">profile</span><span class="o">.</span><span class="n">ProfileHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/profile/(\w+)&#39;</span><span class="p">,</span> <span class="n">profile</span><span class="o">.</span><span class="n">ProfileHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/plugin&#39;</span><span class="p">,</span> <span class="n">plugin</span><span class="o">.</span><span class="n">PluginHandler</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">r&#39;/admin/plugin/(\w+)&#39;</span><span class="p">,</span> <span class="n">plugin</span><span class="o">.</span><span class="n">PluginHandler</span><span class="p">)]</span>
+</pre></div>
+
+
+<blockquote>
+<p>使用正则表达式配置路由， 具体配置方法请参考<a href="http://demo.pythoner.com/itt2zh/ch1.html#ch1-2-1-1">Tornado的参数handlers配置说明</a></p>
+</blockquote>
+<h3 id="configdbpy"><a name="user-content-configdbpy" href="#configdbpy" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数据库相关配置文件config/db.py</h3>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">tormysql</span>
+<span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="kn">import</span> <span class="nn">config.app</span> <span class="kn">as</span> <span class="nn">app_cfg</span>
+<span class="kn">from</span> <span class="nn">tornado.log</span> <span class="kn">import</span> <span class="n">app_log</span> <span class="k">as</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">tornado.web</span> <span class="kn">import</span> <span class="n">gen</span>
+
+
+<span class="c1"># 创建数据库连接池</span>
+<span class="n">pool</span> <span class="o">=</span> <span class="n">tormysql</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">ConnectionPool</span><span class="p">(</span>
+    <span class="n">max_connections</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_pool_size</span><span class="p">,</span>
+    <span class="n">idle_seconds</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_pool_recycle</span><span class="p">,</span>
+    <span class="n">wait_connection_timeout</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_timeout</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_host</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_port</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_user</span><span class="p">,</span>
+    <span class="n">passwd</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_password</span><span class="p">,</span>
+    <span class="n">db</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_name</span><span class="p">,</span>
+    <span class="n">charset</span><span class="o">=</span><span class="n">app_cfg</span><span class="o">.</span><span class="n">db_charset</span><span class="p">,</span>
+    <span class="n">cursorclass</span><span class="o">=</span><span class="n">pymysql</span><span class="o">.</span><span class="n">cursors</span><span class="o">.</span><span class="n">DictCursor</span><span class="p">,</span>
+    <span class="n">autocommit</span><span class="o">=</span><span class="bp">True</span>
+<span class="p">)</span>
+
+
+<span class="c1"># 初始化数据库</span>
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">init_db</span><span class="p">():</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE IF NOT EXISTS `t_options` (</span>
+<span class="s">  `id` int(11) NOT NULL AUTO_INCREMENT,</span>
+<span class="s">  `name` varchar(200) NOT NULL,</span>
+<span class="s">  `value` text NOT NULL,</span>
+<span class="s">  PRIMARY KEY (`id`),</span>
+<span class="s">  UNIQUE KEY `ix_t_options_name` (`name`)</span>
+<span class="s">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span>
+
+<span class="s">CREATE TABLE IF NOT EXISTS `t_projects` (</span>
+<span class="s">  `id` int(11) NOT NULL AUTO_INCREMENT,</span>
+<span class="s">  `name` varchar(200) NOT NULL,</span>
+<span class="s">  `user` text,</span>
+<span class="s">  `status` smallint(6) NOT NULL DEFAULT &#39;1&#39; COMMENT &#39;0 禁用, 1 正常&#39;,</span>
+<span class="s">  PRIMARY KEY (`id`),</span>
+<span class="s">  UNIQUE KEY `ix_t_projects_name` (`name`),</span>
+<span class="s">  KEY `ix_t_projects_status` (`status`)</span>
+<span class="s">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span>
+
+<span class="s">CREATE TABLE IF NOT EXISTS `t_settings` (</span>
+<span class="s">  `id` int(11) NOT NULL AUTO_INCREMENT,</span>
+<span class="s">  `project` int(11) NOT NULL,</span>
+<span class="s">  `type` varchar(20) NOT NULL COMMENT &#39;url 接口、crypt 加解密、host 环境、job 任务、list 用例、suite 测试集、log 日志、param 参数、report 报告&#39;,</span>
+<span class="s">  `name` varchar(1000) NOT NULL,</span>
+<span class="s">  `value` longtext NOT NULL,</span>
+<span class="s">  `status` smallint(6) NOT NULL DEFAULT &#39;1&#39; COMMENT &#39;0 禁用, 1 正常, job[0 计划中, 1 排队中, 2 测试中, 3 已完成, 4 暂停, 5 异常]&#39;,</span>
+<span class="s">  `sort` smallint(6) NOT NULL DEFAULT &#39;0&#39;,</span>
+<span class="s">  PRIMARY KEY (`id`),</span>
+<span class="s">  KEY `project` (`project`),</span>
+<span class="s">  KEY `ix_t_settings_type` (`type`),</span>
+<span class="s">  KEY `ix_t_settings_status` (`status`),</span>
+<span class="s">  CONSTRAINT `t_settings_ibfk_1` FOREIGN KEY (`project`) REFERENCES `t_projects` (`id`)</span>
+<span class="s">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span>
+
+<span class="s">CREATE TABLE IF NOT EXISTS `t_users` (</span>
+<span class="s">  `id` int(11) NOT NULL AUTO_INCREMENT,</span>
+<span class="s">  `username` varchar(60) DEFAULT &#39;&#39;,</span>
+<span class="s">  `password` varchar(255) NOT NULL DEFAULT &#39;&#39;,</span>
+<span class="s">  `realname` varchar(50) DEFAULT &#39;&#39;,</span>
+<span class="s">  `email` varchar(100) NOT NULL DEFAULT &#39;&#39;,</span>
+<span class="s">  `registerTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,</span>
+<span class="s">  `lastLoginTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,</span>
+<span class="s">  `role` smallint(6) NOT NULL DEFAULT &#39;2&#39; COMMENT &#39;0 超级管理员, 1 管理员, 2 普通用户&#39;,</span>
+<span class="s">  `status` smallint(6) NOT NULL DEFAULT &#39;1&#39; COMMENT &#39;0 禁用, 1 正常&#39;,</span>
+<span class="s">  PRIMARY KEY (`id`),</span>
+<span class="s">  UNIQUE KEY `ix_t_users_email` (`email`),</span>
+<span class="s">  UNIQUE KEY `ix_t_users_username` (`username`),</span>
+<span class="s">  KEY `ix_t_users_status` (`status`)</span>
+<span class="s">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span>
+<span class="s">    &quot;&quot;&quot;</span>
+    <span class="n">tx</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">pool</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;初始化数据库SQL:</span><span class="se">\n</span><span class="s">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span>
+        <span class="k">yield</span> <span class="n">tx</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">tx</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;初始化数据库失败#{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">tx</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;初始化数据库成功&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="model"><a name="user-content-model" href="#model" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Model</h3>
+<blockquote>
+<p>所有操作数据库相关都存放在modules目录下</p>
+</blockquote>
+<p><img alt="Model" src="images/help/%E6%BA%90%E7%A0%81-module1.png" /><br />
+<img alt="Model" src="images/help/%E6%BA%90%E7%A0%81-module2.png" /></p>
+<h3 id="handlerview"><a name="user-content-handlerview" href="#handlerview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Handler(View)</h3>
+<blockquote>
+<p>所有跟用户有交互的操作及结果展示相关都存放在handlers目录下</p>
+</blockquote>
+<p><img alt="Handler" src="images/help/%E6%BA%90%E7%A0%81-view1.png" /><br />
+<img alt="Handler" src="images/help/%E6%BA%90%E7%A0%81-view2.png" /></p>
+<h3 id="includecontroller"><a name="user-content-includecontroller" href="#includecontroller" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Include(Controller)</h3>
+<blockquote>
+<p>所有逻辑处理都存在放includes目录中</p>
+</blockquote>
+<p><img alt="Include" src="images/help/%E6%BA%90%E7%A0%81-controller1.png" /><br />
+<img alt="Include" src="images/help/%E6%BA%90%E7%A0%81-controller2.png" /></p>
+<h3 id="_49"><a name="user-content-_49" href="#_49" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模板</h3>
+<p><img alt="模板" src="images/help/%E6%BA%90%E7%A0%81-%E6%A8%A1%E6%9D%BF.png" /></p>
+<h3 id="_50"><a name="user-content-_50" href="#_50" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>静态资源</h3>
+<p><img alt="静态资源" src="images/help/%E6%BA%90%E7%A0%81-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90.png" /></p>
+<blockquote>
+<p>静态资源中已经包含了jQuery和Bootstrap相关的内容，可以直接使用。</p>
+</blockquote>
+<h2 id="_51"><a name="user-content-_51" href="#_51" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>功能扩展</h2>
+<p>前面介绍了源码的组织结构，如果需要扩展一个功能的话需要怎么做呢？下面拿增加测试数据生成器功能为例。</p>
+<h3 id="_52"><a name="user-content-_52" href="#_52" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一步 新建视图文件</h3>
+<p>我们在<code>handlers/admin</code>中新建一个文件，比如叫plugin.py</p>
+<blockquote>
+<p>handlers下的目录结构可自行组织，这里admin目录主要存放后台处理程序。</p>
+</blockquote>
+<p>在plugin.py文件中定义访问页面后的处理过程。<br />
+<img alt="新建视图文件" src="images/help/%E6%89%A9%E5%B1%951.png" /></p>
+<h3 id="_53"><a name="user-content-_53" href="#_53" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第二步 新建模板文件</h3>
+<p>不建议在代码中夹杂html代码，所以涉及页面展示的最好建一个模板文件<br />
+<img alt="新建模板文件" src="images/help/%E6%89%A9%E5%B1%952.png" /></p>
+<blockquote>
+<p>新建<code>templates/admin/plugin.html</code>模板文件，在<code>templates/admin/includes/plugin</code>中新建需要引用的块模板文件。<br />
+templates目录下，除了需要固定一个UI模块目录modules外，其它文件可自行组织，这里admin目录主要存放后台相关的模板。</p>
+</blockquote>
+<p>在<code>templates/admin/plugin.html</code>模板文件中，需要引入后台统一的模板文件<code>../public/admin.html</code>，再定义子页面导航<br />
+<div class="codehilite"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;../public/admin.html&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">head</span> <span class="cp">%}</span>
+# 在这里根据需要引入css样式文件或直接编写样式
+<span class="cp">{%</span> <span class="k">end</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">sidebar</span> <span class="cp">%}</span>
+# 定义子页面导航路径
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-sidebar&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">&quot;bankcard&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/admin/plugin/bankcard&quot;</span><span class="nt">&gt;</span>银行卡号生成器<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">&quot;idcard&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/admin/plugin/idcard&quot;</span><span class="nt">&gt;</span>身份证号码生成器<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-sidebar&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">&quot;other&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/admin/plugin/other&quot;</span><span class="nt">&gt;</span>另外一组导航<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="cp">{%</span> <span class="k">end</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">section</span> <span class="cp">%}</span>
+    # 根据传入的不同参数展示不同的子页面
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">op</span> <span class="o">==</span> <span class="s1">&#39;bankcard&#39;</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;includes/plugin/bankcard.html&#39;</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">elif</span> <span class="nv">op</span> <span class="o">==</span> <span class="s1">&#39;idcard&#39;</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;includes/plugin/idcard.html&#39;</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">end</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">end</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">footer</span> <span class="cp">%}</span>
+# 在这里根据需要引入js文件或直接编写js代码
+<span class="cp">{%</span> <span class="k">end</span> <span class="cp">%}</span>
+</pre></div>
+</p>
+<blockquote>
+<p>定义导航路径中的id是必填项，比如<code>id="bankcard"</code>，id值取<code>/admin/plugin/bankcard</code>中的bankcard，其它链接id值类推，如果不填写id值，在访问页面时，无法自动高亮选中的链接。</p>
+</blockquote>
+<h3 id="_54"><a name="user-content-_54" href="#_54" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第三步 配置路由</h3>
+<p><img alt="配置路由" src="images/help/%E6%89%A9%E5%B1%953.png" /></p>
+<blockquote>
+<p>通过配置访问路由，定义通过什么样的链接访问新增的功能页面，在定义模板时，我们配置了像<code>/admin/plugin</code>和<code>/admin/plugin/bankcard</code>这样的链接访问页面或子页面，路由配置如上图。</p>
+</blockquote>
+<h3 id="_55"><a name="user-content-_55" href="#_55" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第四步 增加访问入口</h3>
+<p><img alt="配置路由" src="images/help/%E6%89%A9%E5%B1%954.png" /></p>
+<blockquote>
+<p>因为是后台功能，我们需要在后台导航中添加访问入口。<br />
+打开<code>templates/public/admin.html</code>后台统一模板文件，在导航代码块部分新增一个导航链接<code>&lt;li id="plugin"&gt;&lt;a href="/admin/plugin"&gt;扩展功能&lt;/a&gt;&lt;/li&gt;</code><br />
+注意，这里的<code>id="plugin"</code>是必须要定义的，id值取<code>/admin/plugin</code>中的plugin，其它链接类推。如果不定义id值，在访问导航链接时无法自动高亮选中的导航。</p>
+</blockquote>
+<h3 id="_56"><a name="user-content-_56" href="#_56" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第五步 编写处理函数</h3>
+<p>通过以上的配置，现在就可以编写具体的处理过程了，主要在<code>handlers/admin/plugin.py</code>中实现，根据需要编写GET或POST处理逻辑，如果需要操作数据库，请先在<code>modules</code>目录中添加操作数据库的方法(如果没有现成的方法可用的话)。<br />
+<img alt="编写处理函数" src="images/help/%E6%89%A9%E5%B1%956.png" /></p>
+<h2 id="_57"><a name="user-content-_57" href="#_57" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>附</h2>
+<h3 id="_58"><a name="user-content-_58" href="#_58" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>系统预定义参数</h3>
+<blockquote>
+<p>{random_mobile}    <strong>#随机手机号</strong><br />
+{random_email}     <strong>#随机email</strong><br />
+{timestamp}        <strong>#时间戳</strong><br />
+{datetime}         <strong>#当前时间, 格式: %Y-%m-%d %H:%M:%S</strong><br />
+{datetime_int}     <strong>#当前时间, 格式: %Y%m%d%H%M%S</strong><br />
+{date}             <strong>#当前日期, 格式: %Y-%m-%d</strong><br />
+{date_int}         <strong>#当前日期, 格式: %Y%m%d</strong></p>
+</blockquote>
+<h3 id="_59"><a name="user-content-_59" href="#_59" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>系统关联参数</h3>
+<blockquote>
+<p>{headers_value}=response_headers.响应头名称        <strong>#获取指定的响应头信息</strong><br />
+如：{cookie}=response_headers.Set-Cookie           <strong>#获取cookie</strong><br />
+{body}=response_body                               <strong>#获取完整响应body</strong></p>
+</blockquote></article></body></html>

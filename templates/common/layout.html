@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} - {{ company }}</title>
+    <link href="{{ static_url('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="{{ static_url('js/html5shiv.min.js') }}"></script>
+      <script src="{{ static_url('js/respond.min.js') }}"></script>
+    <![endif]-->
+    <script src="{{ static_url('js/jquery.min.js') }}"></script>
+    <link href="{{ static_url('css/style.css') }}" rel="stylesheet">
+    {% block head %}
+    {% end %}
+</head>
+<body>
+<header>
+    {% block header %}
+    {% end %}
+</header>
+<section>
+    {% block section %}
+    {% end %}
+</section>
+{% block aside %}
+{% end %}
+<footer>
+    {% block footer %}
+    {% end %}
+    <script src="{{ static_url('js/bootstrap.min.js') }}"></script>
+    <script src="{{ static_url('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ static_url('js/localization/messages_zh.min.js') }}"></script>
+    <script src="{{ static_url('js/home.js') }}"></script>
+</footer>
+</body>
+</html>

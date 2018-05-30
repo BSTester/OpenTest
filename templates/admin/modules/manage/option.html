@@ -1,0 +1,89 @@
+<form class="form-horizontal" action="/admin/manage/option" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="company">公司名称</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="company" name="company" value="{{ option.company }}" type="text" class="form-control"
+                   placeholder="2-60个字符" minlength="2" maxlength="60">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="page_limit">分页数目</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="page_limit" name="page_limit" value="{{ option.page_limit }}" type="number" class="form-control"
+                   placeholder="10" min="10" max="100" step="10">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="email_ext">注册邮箱后缀</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="email_ext" name="email_ext" value="{{ option.email_ext }}" type="text" class="form-control" placeholder="bstester.com">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="smtp_host">SMTP 服务地址</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="smtp_host" name="smtp_host" value="{{ option.smtp_host }}" type="text" class="form-control" placeholder="smtp.bstester.com">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="smtp_port">SMTP 服务端口</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="smtp_port" name="smtp_port" value="{{ option.smtp_port }}" type="text" class="form-control" placeholder="25">
+        </div>
+        <div class="col-md-2 col-lg-1 checkbox">
+            <label>
+                <input type="checkbox" name="use_ssl" {% if option.use_ssl == 'on' %}checked{% end %}><b>使用SSL</b>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="smtp_user">SMTP 登录用户</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="smtp_user" name="smtp_user" value="{{ option.smtp_user }}" type="text" class="form-control" placeholder="someone@mail.com">
+        </div>
+        <label class="col-md-2 col-lg-1 control-label" for="send_to">配置测试</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="send_to" name="send_to" type="email" class="form-control" placeholder="someone@mail.com">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="smtp_password">SMTP 用户密码</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="smtp_password" name="smtp_password" value="{{ option.smtp_password }}" type="password" class="form-control">
+        </div>
+        <div class="col-md-offset-2 col-md-2 col-lg-offset-1 col-lg-1">
+            <input type="button" id="mail-test" value="测试" class="btn btn-primary">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="mail_from">发件人显示为</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="mail_from" name="mail_from" value="{{ option.mail_from }}" type="email" class="form-control" placeholder="someone@mail.com">
+        </div>
+        <div class="col-md-offset-2 col-md-2 col-lg-offset-1 col-lg-1">
+            <span class="label label-info sr-only" style="font-size:14px;" id="test-msg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="report_url">邮件报告链接域名</label>
+        <div class="col-md-3 col-lg-2">
+            <input id="report_url" name="report_url" value="{{ option.report_url }}" type="text" class="form-control" placeholder="http(s)://www.bstester.com">
+        </div>
+        <div class="checkbox col-md-2">
+            <label>
+                <input type="checkbox" name="mail_report" {% if option.mail_report == 'on' %}checked{% end %}><b>启用邮件通知</b>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-1">
+            <input type="button" id="submit" value="保存" class="form-control btn btn-primary">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-1">
+            <span class="label label-info sr-only" style="font-size:14px;" id="msg"></span>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+{% extends '../common/layout_admin.html' %}
+
+{% block sidebar %}
+<ul class="nav nav-sidebar">
+    {% if current_user.role == 0 %}
+    <li id="option"><a href="/admin/manage/option">系统设置</a></li>
+    {% end %}
+    <li id="users"><a href="/admin/manage/users">用户管理</a></li>
+    <li id="logs"><a href="/admin/manage/logs">日志管理</a></li>
+</ul>
+{% end %}
+
+{% block section %}
+    {% if op == 'option' %}
+        {% include 'modules/manage/option.html' %}
+    {% elif op == 'users' %}
+        {% include 'modules/manage/users.html' %}
+    {% elif op == 'logs' %}
+        {% include 'modules/manage/logs.html' %}
+    {% end %}
+    {% include '../common/modules/tips.html' %}
+{% end %}
+
+{% block footer %}
+<script src="{{ static_url('js/manage.js') }}"></script>
+{% end %}
