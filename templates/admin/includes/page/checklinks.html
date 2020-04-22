@@ -1,0 +1,64 @@
+<form id="check-link" class="form-horizontal" action="/admin/page-test/checklinks" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <label for="name" class="col-md-2 col-lg-1 control-label">任务名称:</label>
+        <div class="col-md-3 col-lg-2">
+            <input type="text" id="name" name="name" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="url" class="col-md-2 col-lg-1 control-label">入口页面:</label>
+        <div class="col-md-8 col-lg-6" id="check-url">
+            <textarea id="url" name="url" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="checkbox col-md-offset-2 col-md-8 col-lg-offset-1 col-lg-4">
+            <label>
+                <input type="checkbox" name="check_all" id="check-all"><b>检查全站</b>(只能配置一个入口页面, 自动扫描页面链接进行递归检查)
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exclude-url" class="col-md-2 col-lg-1 control-label">排除链接:</label>
+        <div class="col-md-8 col-lg-6">
+            <textarea id="exclude-url" name="exclude_url" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="device" class="col-md-2 col-lg-1 control-label">模拟设备:</label>
+        <div class="col-md-2 col-lg-1">
+            <select id="device" name="device" class="form-control">
+                <option value="PC" selected>PC</option>
+                <option value="iPhone">iPhone</option>
+                <option value="Android">Android</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cookie" class="col-md-2 col-lg-1 control-label">Cookies:</label>
+        <div class="col-md-5 col-lg-3">
+            <input type="text" id="cookie" name="cookie" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="hosts" class="col-md-2 col-lg-1 control-label">Hosts:</label>
+        <div class="col-md-5 col-lg-3">
+            <textarea id="hosts" name="hosts" class="form-control">{{ hosts }}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2 col-lg-offset-1 col-lg-1">
+            <input id="check-submit" type="button" class="form-control btn btn-primary" value="开始检查">
+        </div>
+        <div class="col-md-offset-6 col-md-2 col-lg-offset-4 col-lg-1">
+            <a href="#" target="_blank" id="check-result" type="button" class="form-control btn btn-info sr-only">测试报告</a>
+        </div>
+    </div>
+    <div class="form-group test-response">
+        <label class="control-label col-md-2 col-lg-1">日志:</label>
+        <div class="col-md-10">
+            <span class="form-control well" id="check-logs"></span>
+        </div>
+    </div>
+</form>

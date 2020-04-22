@@ -1,0 +1,417 @@
+{% if do == 'list' %}
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="addLabel">配置测试接口</h4>
+            </div>
+            <form class="form-horizontal" id="single-test" action="/admin/interface-test/list" method="post" accept-charset="utf-8">
+            {% raw xsrf_form_html() %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="project" class="col-md-2 control-label">所属项目:</label>
+                        <div class="col-md-4">
+                            <select id="project" name="pid" class="form-control">
+                                <option value="0" selected>请选择项目</option>
+                                {% for pj in project_list %}
+                                <option value="{{ pj.id }}">{{ pj.name }}</option>
+                                {% end %}
+                            </select>
+                            <textarea class="sr-only" data-id="{{ len(lists) }}">
+                                <option value="0" selected>请选择项目</option>
+                                {% for pj in project_list %}
+                                <option value="{{ pj.id }}">{{ pj.name }}</option>
+                                {% end %}
+                            </textarea>
+                        </div>
+                        <label for="host" class="control-label col-md-1">域&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名: </label>
+                        <div class="col-md-4">
+                            <select id="host" name="host" class="form-control">
+                                <option value="none" selected>请选择域名</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="env" class="control-label col-md-2">环&nbsp;&nbsp;&nbsp;&nbsp;境: </label>
+                        <div class="col-md-4">
+                            <select id="env" name="env" class="form-control">
+                                <option value="none">默认环境</option>
+                            </select>
+                        </div>
+                        <label for="host-url" class="control-label col-md-1">接&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;口: </label>
+                        <div class="col-md-4">
+                            <select id="host-url" name="host_url" class="form-control">
+                                <option value="none" selected>请选择接口</option>
+                            </select>
+                        </div>
+                        <input type="hidden" value="" id="url-label" name="url_label">
+                    </div>
+                    <div class="form-group">
+                        <label for="method" class="control-label col-md-2">Method:</label>
+                        <div class="col-md-2">
+                            <select id="method" name="method" class="form-control">
+                                <option value="POST">POST</option>
+                                <option value="GET">GET</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="headers" class="control-label col-md-2">Headers:</label>
+                        <div class="col-md-9">
+                            <textarea id="headers" name="headers" class="form-control" placeholder="User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36
+                                                                                     Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+                                                                                     Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="body" class="control-label col-md-2">Body:</label>
+                        <div class="col-md-9">
+                            <textarea id="body" name="body" class="form-control" placeholder='请求数据可以是任何格式的字符串, 如是json格式字符串且有加密内容, 请在下方的【Body加密内容】文本框中输入需要加密的字段key, 仅支持第一层加密, 留空则加密所有内容
+                            【Response解密内容】填写响应返回需要解密的字段, 格式与【Body加密内容】一样'></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="keys" class="control-label col-md-2">返回值检查</label>
+                        <div class="col-md-9">
+                            <textarea id="keys" class="form-control" placeholder="此项配置要求接口返回值必须为json格式字符串
+                            检查第一层Key值, 一行配置一个, 需要检查子层时, 在第一层的基础上用 .[] 连接子层需要检查的Key值, 格式, key=0|type [非必填|类型] | key=1|type [必填|类型], 如:
+                            id=1|int
+                            code.[code=1|int,id=1|int,msg=0|str]
+                            rows.[0].[code=1|int,id=1|int,msg=0|str]
+                            result.rows.[code=1|int,id=1|int,msg=0|str]
+                            支持检查的类型有: int|float|num|str|date|time|datetime|list|dict|/正则表达式/" name="keys" style="height:200px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="body-crypt" class="control-label col-md-2">Body加密:</label>
+                        <div class="col-md-3">
+                            <select id="body-crypt" name="body_crypt" class="form-control">
+                                <option value="none">不加密</option>
+                            </select>
+                        </div>
+                        <div class=" col-md-3">
+                            <input type="text" id="encrypt-content" name="encrypt_content" class="form-control" placeholder="Body加密字段">
+                        </div>
+                        <div class=" col-md-3">
+                            <input type="text" id="decrypt-content" name="decrypt_content" class="form-control" placeholder="Response解密字段">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="checkpoint">检查点:</label>
+                        <div class=" col-md-3">
+                            <input type="text" id="checkpoint" name="checkpoint" class="form-control" placeholder="查找Response中是否存在特定值">
+                        </div>
+                        <label class="col-md-2 control-label" for="correlation">关联配置:</label>
+                        <div class=" col-md-4">
+                            <input type="text" id="correlation" name="correlation" class="form-control" placeholder="{page_id}=data.page_id | {result}=response_body | {id}=data.[6].id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment" class="control-label col-md-2">备注:</label>
+                        <div class="col-md-9">
+                            <textarea id="comment" style="max-height:50px;" name="comment" class="form-control" placeholder="备注信息, 比如描述所配置参数用于测试异常流程还是正式流程"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group test-response">
+                        <label class="control-label col-md-2">Response:</label>
+                        <div class="col-md-9">
+                            <span class="form-control well" style="max-height:600px;" id="test-response"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="test-submit" class="btn btn-primary col-md-offset-2 col-md-2">测试配置</button>
+                    <div class="checkbox col-md-2">
+                        <label>
+                            <input type="checkbox" name="redirects" checked><b>自动重定向</b>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <input type="button" id="save-submit" class="btn btn-primary" value="保存">
+                    <input type="hidden" id="sid" name="sid" value="0">
+                    <input type="hidden" id="num-id" name="id" value="{{ len(lists) }}">
+                    <input type="hidden" name="suite_id" value="{{ page }}">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<form id="list-form" class="form-horizontal" style="min-height: 700px;" action="/admin/interface-test/list" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <div class="col-md-1">
+            <a href="/admin/interface-test/{{ op }}/{{ project_id }}" class="control-label btn btn-primary glyphicon glyphicon-chevron-left"></a>
+        </div>
+        <div class="col-md-2 col-lg-1">
+            <button type="button" class="control-label btn btn-primary" id="list-add">配置测试接口</button>
+        </div>
+        <label for="suite_name" class="control-label col-md-2 col-lg-1">用例名称:</label>
+        <div class="col-md-2 col-lg-2">
+            <span id="suite_name" class="form-control">{{ suite_name }}</span>
+        </div>
+        <label for="project_name" class="control-label col-md-2 col-lg-1">项目名称:</label>
+        <div class="col-md-2  col-lg-2">
+            <span id="project_name" class="form-control">{{ project_name }}</span>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th class="col-md-1">所属项目</th>
+                <th class="col-md-3">Url</th>
+                <th>Method</th>
+                <th class="col-md-2">Headers</th>
+                <th class="col-md-2">关联参数</th>
+                <th class="col-md-1">检查点</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in range(len(lists)) %}
+            <tr>
+                <td class="detail"><div class="moveup" data-sid="{{ lists[i].sid }}" data-id="{{ i+1 }}"></div>{{ i+1 }}</td>
+                <td class="detail" data-toggle="tooltip" data-placement="top" title="{{ lists[i].label }}">{{ lists[i].project }}</td>
+                <td class="detail" style="max-width:300px;overflow-wrap:break-word;" data-toggle="tooltip" data-placement="top" title="{{ lists[i].label }}">{{ lists[i].url }}</td>
+                <td class="detail">{{ lists[i].method }}</td>
+                <td class="detail" style="max-width:300px;overflow-wrap:break-word;" data-toggle="tooltip" data-placement="top" title="{{ lists[i].comment }}">{% for line in lists[i].headers.splitlines() %}{{ line }}</br>{% end %}</td>
+                <td class="detail" style="max-width:200px;overflow-wrap:break-word;">{% for line in lists[i].correlation.split('|') %}{{ line }}</br>{% end %}</td>
+                <td class="detail" style="max-width:100px;overflow-wrap:break-word;">{% for line in lists[i].checkpoint.split('|') %}{{ line }}</br>{% end %}</td>
+                <td>
+                    <a class="btn btn-primary btn-edit" data-project="{{ lists[i].project }}" data-id="{{ i+1 }}" data-pid="{{ lists[i].pid }}" data-sid="{{ lists[i].sid }}">编辑</a>&nbsp;&nbsp;
+                    {% if i+1 != 1 %}
+                    <a class="btn btn-info btn-moveup" data-sid="{{ lists[i].sid }}" data-id="{{ i+1 }}">上移</a>&nbsp;&nbsp;
+                    {% end %}
+                    {% if current_user.role != 2 %}
+                    <a class="btn btn-danger btn-delete" data-id="{{ lists[i].sid }}|{{ page }}">删除</a></td>
+                    {% end %}
+            </tr>
+            {% end %}
+            </tbody>
+        </table>
+    </div>
+</form>
+<div class="modal-dialog" id="list-detail">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><span id="url"></span> 接口配置详情</h5>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th class="col-md-2">请求 URL: </th>
+                <td id="test-url"></td>
+            </tr>
+            <tr>
+                <th>自动重定向: </th>
+                <td id="test-follow_redirects"></td>
+            </tr>
+            <tr>
+                <th>接口描述: </th>
+                <td id="test-label"></td>
+            </tr>
+            <tr>
+                <th>请求 Method: </th>
+                <td id="test-method"></td>
+            </tr>
+            <tr>
+                <th>请求 Headers: </th>
+                <td id="test-headers"></td>
+            </tr>
+            <tr>
+                <th>请求 Body: </th>
+                <td id="test-body"></td>
+            </tr>
+            <tr>
+                <th>Body 加密方法: </th>
+                <td id="test-crypt"></td>
+            </tr>
+            <tr>
+                <th>Body 加密字段: </th>
+                <td id="test-encrypt_content"></td>
+            </tr>
+            <tr>
+                <th>Body 解密字段: </th>
+                <td id="test-decrypt_content"></td>
+            </tr>
+            <tr>
+                <th>关联参数: </th>
+                <td id="test-correlation"></td>
+            </tr>
+            <tr>
+                <th>检查点: </th>
+                <td id="test-checkpoint"></td>
+            </tr>
+            <tr>
+                <th>返回值检查: </th>
+                <td id="test-check_key"></td>
+            </tr>
+            <tr>
+                <th>备注: </th>
+                <td id="test-comment"></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+</div>
+{% elif do == 'edit' %}
+<form id="list-form" class="form-horizontal" action="/admin/interface-test/case" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <div class="col-md-1">
+            <a href="javascript:window.history.back();" class="control-label btn btn-primary glyphicon glyphicon-chevron-left"></a>
+        </div>
+        <label for="project_run" class="control-label col-md-2 col-lg-1">项目名称:</label>
+        <div class="col-md-2">
+            <span id="project_run" class="form-control">{{ project_name }}</span>
+            <input type="hidden" name="pid" value="{{ pid }}">
+            <input type="hidden" name="jid" value="{{ sid }}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="run-time" class="control-label col-md-1 col-lg-1">定时:</label>
+        <div class="col-md-3 col-lg-2">
+            <input type="datetime-local" id="run-time" value="{{ plan_time }}" name="plan_time" class="form-control">
+        </div>
+        <div class="col-md-2 col-lg-1">
+            <select id="cycle-time" name="cycle_time" class="form-control">
+                <option value="once" {% if cycle_time == 'once' %}selected{% end %}>一次</option>
+                <option value="hour" {% if cycle_time == 'hour' %}selected{% end %}>每时</option>
+                <option value="day" {% if cycle_time == 'day' %}selected{% end %}>每天</option>
+                <option value="week" {% if cycle_time == 'week' %}selected{% end %}>每周</option>
+                <option value="mouth" {% if cycle_time == 'mouth' %}selected{% end %}>每月</option>
+                <option value="year" {% if cycle_time == 'year' %}selected{% end %}>每年</option>
+            </select>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <input type="text" value="{{ job_name }}" name="job_name" placeholder="任务名称" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <input type="button" value="预约执行" data-type="plan" class="run-list-test btn btn-info">
+            <input type="button" value="立即执行" data-type="now" class="run-list-test btn btn-primary">
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th><div class="checkbox"><label><input id="select-all" type="checkbox">#</label></div></th>
+                <th>用例名称</th>
+                <th>所属项目</th>
+                <th class="col-md-3">用例描述</th>
+                <th>接口数</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in range(len(lists)) %}
+            <tr>
+                <td><div class="checkbox moveup" data-sid="{{ lists[i].id }}" data-id="{{ i+1 }}" style="padding-top: 0;"><label><input type="checkbox" name="sid" {% if lists[i].status == 0 %} checked {% end %} value="{{ lists[i].id }}">{{ i+1 }}</label></div></td>
+                <td>{{ lists[i].name }}</td>
+                <td>{{ lists[i].project_name }}</td>
+                <td><textarea class="case-detail" data-sid="{{ lists[i].id }}" style="max-width:400px;width:200px;">{{ lists[i].value.detail }}</textarea></td>
+                <td>{{ len(lists[i].value.cases) }}</td>
+                <td>
+                    {% if i+1 != 1 %}
+                    <a class="btn btn-info btn-moveup" data-sid="{{ lists[i].id }}" data-id="{{ i+1 }}">上移</a>&nbsp;&nbsp;
+                    {% end %}
+            </tr>
+            {% end %}
+            </tbody>
+        </table>
+    </div>
+</form>
+<script>
+$(document).ready(function(){
+    var count = $("#list-form .table-responsive input[name=sid]").length;
+    var checked = $("#list-form .table-responsive input[name=sid]:checked").length;
+    if(count == checked){
+        $("#list-form #select-all").prop("checked", true);
+    }
+});
+</script>
+{% else %}
+<form id="list-form" class="form-horizontal" action="/admin/interface-test/case" method="post" accept-charset="utf-8">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <label for="project-run" class="control-label col-md-1">项目:</label>
+        <div class="col-md-3 col-lg-2">
+            <select id="project-run" name="pid" class="form-control">
+                <option value="0">所有项目</option>
+                {% for pj in project_list %}
+                    {% if pj.id == pid %}
+                    <option value="{{ pj.id }}" selected>{{ pj.name }}</option>
+                    {% else %}
+                    <option value="{{ pj.id }}">{{ pj.name }}</option>
+                    {% end %}
+                {% end %}
+            </select>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <input type="text" id="test-suite" name="test-suite" placeholder="用例名称" class="form-control">
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <input type="button" value="添加" id="suite" class="btn btn-primary">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="run-time" class="control-label col-md-1">定时:</label>
+        <div class="col-md-3 col-lg-2">
+            <input type="datetime-local" id="run-time" name="plan_time" class="form-control">
+        </div>
+        <div class="col-md-2 col-lg-1">
+            <select id="cycle-time" name="cycle_time" class="form-control">
+                <option value="once">一次</option>
+                <option value="hour">每时</option>
+                <option value="day">每天</option>
+                <option value="week">每周</option>
+                <option value="mouth">每月</option>
+                <option value="year">每年</option>
+            </select>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <input type="text" name="job_name" placeholder="任务名称" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <input type="button" value="预约执行" data-type="plan" class="run-list-test btn btn-info">
+            <input type="button" value="立即执行" data-type="now" class="run-list-test btn btn-primary">
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th><div class="checkbox"><label><input id="select-all" type="checkbox">#</label></div></th>
+                <th>用例名称</th>
+                <th>所属项目</th>
+                <th class="col-md-3">用例描述</th>
+                <th>接口数</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in range(len(lists)) %}
+            <tr>
+                <td><div class="checkbox moveup" data-sid="{{ lists[i].id }}" data-id="{{ (page-1)*limit+i+1 }}" style="padding-top: 0;"><label><input type="checkbox" name="sid" value="{{ lists[i].id }}">{{ (page-1)*limit+i+1 }}</label></div></td>
+                <td class="case-edit"><input class="col-md-10" disabled data-type="name" data-sid="{{ lists[i].id }}" value="{{ lists[i].name }}"></td>
+                <td>{{ lists[i].project_name }}</td>
+                <td class="case-edit"><textarea disabled data-type="detail" data-sid="{{ lists[i].id }}" class="col-md-12">{{ lists[i].value.detail }}</textarea></td>
+                <td>{{ len(lists[i].value.cases) }}</td>
+                <td>
+                    <a class="btn btn-primary" href="/admin/interface-test/case/list/{{ lists[i].id }}">接口配置</a>&nbsp;&nbsp;
+                    {% if (page-1)*limit+i+1 != 1 and pid != 0 %}
+                    <a class="btn btn-info btn-moveup" data-sid="{{ lists[i].id }}" data-id="{{ (page-1)*limit+i+1 }}">上移</a>&nbsp;&nbsp;
+                    {% end %}
+                    {% if current_user.role != 2 %}
+                    <a class="btn btn-danger btn-delete" data-id="{{ lists[i].id }}">删除</a></td>
+                    {% end %}
+            </tr>
+            {% end %}
+            </tbody>
+        </table>
+        {% module nav(total_page, page, limit, '/admin/interface-test/case/{}'.format(pid)) %}
+    </div>
+</form>
+{% end %}
