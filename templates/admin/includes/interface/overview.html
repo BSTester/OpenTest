@@ -1,0 +1,104 @@
+<h3>计划任务</h3>
+<a class="btn btn-info col-md-offset-11" title="查看日志" data-toggle="modal" data-target="#log-detail">查看日志</a>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>任务名称</th>
+            <th>
+                <select id="overview-list">
+                    <option value="0">所有项目</option>
+                    {% for pj in project_list %}
+                        {% if pid == pj.id %}
+                        <option value="{{ pj.id }}" selected>{{ pj.name }}</option>
+                        {% else %}
+                        <option value="{{ pj.id }}">{{ pj.name }}</option>
+                        {% end %}
+                    {% end %}
+                </select>
+            </th>
+            <th>预约执行时间</th>
+            <th>周期</th>
+            <th>实际执行时间</th>
+            <th>持续时间(秒)</th>
+            <th>状态</th>
+            <th class="col-md-3">操作</th>
+        </tr>
+        </thead>
+        <form id="form-jobs-list" class="form-horizontal" action="/admin/interface-test/overview" method="post" accept-charset="utf-8">
+            <tbody>
+            {% for i in range(len(lists)) %}
+            <tr>
+                <td>{{ (page-1)*limit+i+1 }}</td>
+                <td>
+                    {% if lists[i].top == 0 %}
+                    <span class="glyphicon glyphicon-pushpin"></span>
+                    {% end %}
+                    {{ lists[i].name }}
+                </td>
+                <td>{{ lists[i].project }}</td>
+                <td>{{ lists[i].plan_time }}</td>
+                <td>{{ lists[i].cycle_time }}</td>
+                <td>{{ lists[i].start_time }}</td>
+                <td>{{ lists[i].elapsed_time }}</td>
+                <td>{% if lists[i].status == 0 %}
+                    <span class="label label-info">计划中</span>
+                    {% elif lists[i].status == 1 %}
+                    <span class="label label-warning">排队中</span>
+                    {% elif lists[i].status == 2 %}
+                    <span class="label label-warning">测试中</span>
+                    {% elif lists[i].status == 3 %}
+                    <span class="label label-primary">已完成</span>
+                    {% elif lists[i].status == 4 %}
+                    <span class="label label-danger">已暂停</span>
+                    {% else %}
+                    <span class="label label-danger">异常终止</span>
+                    {% end %}
+                </td>
+                <td>
+                    {% if lists[i].rid != '' %}
+                    <a class="btn btn-primary glyphicon glyphicon-bullhorn" data-toggle="tooltip" data-placement="top" title="查看报告" href="/admin/interface-test/reports/job/{{ lists[i].rid }}"></a>&nbsp;&nbsp;
+                    {% end %}
+                    {% if lists[i].status in [3,4,5] %}
+                    <a class="btn btn-info run-job glyphicon glyphicon-repeat" data-toggle="tooltip" data-placement="top" title="重新执行" data-sid="{{ lists[i].sid }}"></a>&nbsp;&nbsp;
+                    {% end %}
+                    {% if lists[i].status == 0 %}
+                    <a class="btn btn-info run-job glyphicon glyphicon-play" data-toggle="tooltip" data-placement="top" title="执行任务" data-sid="{{ lists[i].sid }}"></a>&nbsp;&nbsp;
+                    {% end %}
+                    {% if lists[i].status in [0,1,2] %}
+                    <a class="btn btn-danger cancel-job glyphicon glyphicon-stop" data-toggle="tooltip" data-placement="top" title="停止任务" data-sid="{{ lists[i].sid }}"></a>&nbsp;&nbsp;
+                    {% end %}
+                    <a href="/admin/interface-test/case/edit/{{ lists[i].sid }}" class="glyphicon glyphicon-edit btn btn-primary" data-toggle="tooltip" data-placement="top" title="编辑任务"></a>&nbsp;&nbsp;
+                    <a class="glyphicon glyphicon-cloud btn btn-primary" data-toggle="tooltip" data-placement="top" title="切换环境" href="/admin/setting/host/{{ lists[i].project_id }}" target="_blank"></a>&nbsp;&nbsp;
+                    {% if lists[i].top == 0 %}
+                    <span class="glyphicon glyphicon-pushpin btn btn-success up-to-top" data-toggle="tooltip" data-placement="top" title="取消置顶" data-sid="{{ lists[i].sid }}" data-top="{{ lists[i].top }}"></span>&nbsp;&nbsp;
+                    {% else %}
+                    <span class="glyphicon glyphicon-pushpin btn btn-primary up-to-top" data-toggle="tooltip" data-placement="top" title="置顶任务" data-sid="{{ lists[i].sid }}" data-top="{{ lists[i].top }}"></span>&nbsp;&nbsp;
+                    {% end %}
+                    {% if current_user.role != 2 %}
+                    <span class="btn btn-danger btn-delete glyphicon glyphicon-trash" data-id="{{ lists[i].sid }}" title="删除任务"></span>
+                    {% end %}
+                </td>
+            </tr>
+            {% end %}
+            </tbody>
+        </form>
+    </table>
+    {% module nav(total_page, page, limit, '/admin/interface-test/overview/{}'.format(pid)) %}
+</div>
+<div id="log-detail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="log-detail">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">运行日志</h4>
+      </div>
+      <div class="modal-body" id="test-logs" style="background-color: #000;color: #fff;max-height: 600px;overflow-y: scroll;overflow-wrap: break-word;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>

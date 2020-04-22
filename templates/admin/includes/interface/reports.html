@@ -1,0 +1,225 @@
+{% if do == 'job' %}
+<a href="javascript:window.history.back();" class="control-label btn btn-primary glyphicon glyphicon-chevron-left"></a>
+<h3>任务 {{ name }} 测试报告 / 报告时间 {{ report_time }}</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>用例名称</th>
+            <th>所属项目</th>
+            <th>测试接口数</th>
+            <th>通过数</th>
+            <th>失败数</th>
+            <th>通过率</th>
+            <th>测试结果</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in range(len(lists)) %}
+        <tr>
+            <td>{{ i+1 }}</td>
+            <td>{{ lists[i].suite_name }}</td>
+            <td>{{ project }}</td>
+            <td>{{ lists[i].total_test }}</td>
+            <td>{{ lists[i].success_test }}</td>
+            <td>{{ lists[i].fail_test }}</td>
+            <td>{{ lists[i].success_rate }}</td>
+            <td>
+                {% if lists[i].result %}
+                <span class="label label-info">通过</span>
+                {% else %}
+                <span class="label label-danger">失败</span>
+                {% end %}
+            </td>
+            <td><a class="btn btn-primary" href="/admin/interface-test/reports/list/{{ page }}/{{ lists[i].suite_id }}">查看详情</a></td>
+        </tr>
+        {% end %}
+        </tbody>
+    </table>
+</div>
+{% elif do == 'list' %}
+<a href="javascript:window.history.back();" class="control-label btn btn-primary glyphicon glyphicon-chevron-left"></a>
+<h3>测试用例 {{ name }} 报告详情</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="col-md-2">项目</th>
+            <th class="col-md-2">接口</th>
+            <th>Method</th>
+            <th class="col-md-2">关联参数</th>
+            <th class="col-md-2">检查点</th>
+            <th class="col-md-2">返回值检查</th>
+            <th class="col-md-1">请求耗时(秒)</th>
+            <th class="col-md-1">测试结果</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in range(len(lists)) %}
+        <tr>
+            <td>{{ i+1 }}</td>
+            <td>{{ project }}</td>
+            <td data-toggle="tooltip" data-placement="right" title="{{ lists[i].label }}">{{ lists[i].url }}</td>
+            <td>{{ lists[i].method }}</td>
+            <td style="max-width:300px;overflow-wrap:break-word;" data-toggle="tooltip" data-placement="right" title="{{ lists[i].comment }}">{% for key in lists[i].correlation %}
+                {{ key }}={{ lists[i].correlation[key] }}<br>
+                {% end %}</td>
+            <td data-toggle="tooltip" data-placement="right" title="{{ lists[i].comment }}">
+                {% for check in lists[i].checkpoint %}
+                    关键词: <b>{{ check.checkpoint }}</b><br>
+                    结果: <b style="color:#ff0000;">{{ check.result }}</b><br><br>
+                {% end %}
+            </td>
+            <td data-toggle="tooltip" data-placement="right" title="{{ lists[i].comment }}">
+                {% for line in lists[i].check_key %}
+                    深度: <b>{{ line.deep }}</b><br> 字段: <b>{{ line['keys'] }}</b><br> 结果: <b style="color:#ff0000;">{{ line.result.key_result }}</b><br>
+                    {% for row in line.result %}
+                        {% if row != 'key_result' %}
+                            {% if line.result[row] == True %}
+                            <b>{{ row }}: {{ line.result[row] }}</b>
+                            {% else %}
+                            <b style="color:#ff0000;">{{ row }}: {{ line.result[row] }}</b>
+                            {% end %}<br>
+                        {% end %}
+                    {% end %}<br>
+                {% end %}
+            </td>
+            <td>{{ lists[i].request_time }}</td>
+            <td>
+                {% if lists[i].test_result %}
+                <span class="label label-info">通过</span>
+                {% else %}
+                <span class="label label-danger">失败</span>
+                {% end %}
+            </td>
+            <td>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#test-report-{{ i+1 }}">查看响应信息</a>
+                <div class="modal fade" id="test-report-{{ i+1 }}" tabindex="-1" role="dialog" aria-labelledby="reportLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content" style="word-break:break-word;">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="reportLabel-{{ i+1 }}">接口【{{ lists[i].url }}】请求响应参数</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-striped table-hover">
+                                    <tr>
+                                        <th class="col-md-2">请求 URL: </th>
+                                        <td>{{ lists[i].url }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>请求 Method: </th>
+                                        <td>{{ lists[i].method }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>请求 Headers: </th>
+                                        <td>{% for list in lists[i].request_headers.splitlines() %}{{ list }}<br>{% end %}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>请求 Body: </th>
+                                        <td style="max-width:700px;overflow-wrap:break-word;">{{ lists[i].request_body }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>响应 Status: </th>
+                                        <td>{{ lists[i].code }} {{ lists[i].reason }}</td>
+                                    </tr>
+                                    {% if lists[i].error != None %}
+                                    <tr>
+                                        <th>响应 Error: </th>
+                                        <td>{{ lists[i].error }}</td>
+                                    </tr>
+                                    {% end %}
+                                    <tr>
+                                        <th>响应 Headers: </th>
+                                        <td>{% for list in lists[i].headers.splitlines() %}{{ list }}<br>{% end %}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>响应 Body: </th>
+                                        <td style="max-width:700px;overflow-wrap:break-word;">{{ lists[i].body }}</td>
+                                    </tr>
+                                    {% if lists[i].body_decrypt != lists[i].body %}
+                                    <tr>
+                                        <th>响应 Body(解密后): </th>
+                                        <td style="max-width:700px;overflow-wrap:break-word;">{{ lists[i].body_decrypt }}</td>
+                                    </tr>
+                                    {% end %}
+                                    <tr>
+                                        <th>备注: </th>
+                                        <td>{{ lists[i].comment }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% end %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<h3>测试报告</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="col-md-2">任务名称</th>
+            <th class="col-md-1">
+                <select id="reports-list">
+                    <option value="0">所有项目</option>
+                    {% for pj in project_list %}
+                        {% if pid == pj.id %}
+                        <option value="{{ pj.id }}" selected>{{ pj.name }}</option>
+                        {% else %}
+                        <option value="{{ pj.id }}">{{ pj.name }}</option>
+                        {% end %}
+                    {% end %}
+                </select>
+            </th>
+            <th>接口总数</th>
+            <th>用例数</th>
+            <th>通过数</th>
+            <th>失败数</th>
+            <th>通过率</th>
+            <th>持续时间(秒)</th>
+            <th>报告时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <form class="form-horizontal" action="/admin/interface-test/overview" method="post" accept-charset="utf-8">
+            <tbody>
+            {% for i in range(len(lists)) %}
+            <tr>
+                <td>{{ (page-1)*limit+i+1 }}</td>
+                <td>{{ lists[i].name }}</td>
+                <td>{{ lists[i].project }}</td>
+                <td>{{ lists[i].total }}</td>
+                <td>{{ lists[i].total_test }}</td>
+                <td>{{ lists[i].success_test }}</td>
+                <td>{{ lists[i].fail_test }}</td>
+                <td>{{ lists[i].success_rate }}</td>
+                <td>{{ lists[i].elapsed_time }}</td>
+                <td>{{ lists[i].report_time }}</td>
+                <td>
+                    <a class="btn btn-primary" href="/admin/interface-test/reports/job/{{ lists[i].sid }}">查看详情</a>&nbsp;&nbsp;
+                    {% if current_user.role != 2 %}
+                    <a class="btn btn-danger btn-delete" data-id="{{ lists[i].sid }}">删除</a></td>
+                    {% end %}
+                </td>
+            </tr>
+            {% end %}
+            </tbody>
+        </form>
+    </table>
+    {% module nav(total_page, page, limit, '/admin/interface-test/reports/{}'.format(pid)) %}
+</div>
+{% end %}
